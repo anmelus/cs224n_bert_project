@@ -40,10 +40,11 @@ Components that require your implementations are marked with ```TODO```. More de
 
 *ATTENTION:* you are free to re-organize the functions inside each class, but please don't change the variable names that correspond to BERT parameters. The change to these variable names will fail to load the pre-trained weights.
 
-# ---------------------- CURRENT
 
 ### Sanity check
 We provide a sanity check function at sanity_check.py to test your implementation. It will reload two embeddings we computed with our reference implementation and check whether your implementation outputs match ours. 
+
+
 
 ## optimizer.py  (to be implemented)
 This is where `AdamW` is defined.
@@ -55,12 +56,13 @@ There are a few slight variations on AdamW, pleae note the following:
 
 You can check your optimizer implementation using `optimizer_test.py`.
 
-
-## --------------------------------- GOAL
+# ---------------------- CURRENT
 
 ## classifier.py
 
 In this file, you'll get a sense of how BERT is typically used for downstream tasks. You will implement a model to do sentiment classification on top of BERT embeddings.
+
+## --------------------------------- GOAL
 
 ## multitask_classifier.py
 
