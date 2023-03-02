@@ -56,11 +56,11 @@ There are a few slight variations on AdamW, pleae note the following:
 
 You can check your optimizer implementation using `optimizer_test.py`.
 
-# ---------------------- CURRENT
-
 ## classifier.py
 
 In this file, you'll get a sense of how BERT is typically used for downstream tasks. You will implement a model to do sentiment classification on top of BERT embeddings.
+
+# ---------------------- CURRENT
 
 ## --------------------------------- GOAL
 

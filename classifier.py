@@ -44,8 +44,11 @@ class BertSentimentClassifier(torch.nn.Module):
             elif config.option == 'finetune':
                 param.requires_grad = True
 
-        ### TODO
-        raise NotImplementedError
+        ### TODO Finetuning of model
+        self.dropout = torch.nn.Dropout(config.hidden_dropout_prob)
+        self.classifier = torch.nn.Linear(config.hidden_size, self.num_labels)
+        # Not sure what else to do here
+    
 
 
     def forward(self, input_ids, attention_mask):
@@ -54,8 +57,13 @@ class BertSentimentClassifier(torch.nn.Module):
         # HINT: you should consider what is the appropriate output to return given that
         # the training loop currently uses F.cross_entropy as the loss function.
         ### TODO
-        raise NotImplementedError
+        output = self.bert(input_ids, attention_mask)['pooler_output']
+        # outputs[0] = representation of each token in input sequence
+        # outputs[1] = representation of entire input sequence captured by [CLS] token
+        x = self.dropout(output) #outputs[1])
+        logits = self.classifier(x)
 
+        return logits
 
 
 class SentimentDataset(Dataset):
