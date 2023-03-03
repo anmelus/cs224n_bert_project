@@ -60,10 +60,6 @@ You can check your optimizer implementation using `optimizer_test.py`.
 
 In this file, you'll get a sense of how BERT is typically used for downstream tasks. You will implement a model to do sentiment classification on top of BERT embeddings.
 
-# ---------------------- CURRENT
-
-## --------------------------------- GOAL
-
 ## multitask_classifier.py
 
 This is the starting point for the open-ended part of the project. You'll generalize your sentiment classification model to a multitask model, and choose how to train and improve it.

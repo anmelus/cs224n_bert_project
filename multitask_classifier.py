@@ -10,13 +10,12 @@ from bert import BertModel
 from optimizer import AdamW
 from tqdm import tqdm
 
-from datasets import SentenceClassificationDataset, SentencePairDataset, \
-    load_multitask_data, load_multitask_test_data
+from datasets import SentenceClassificationDataset, SentencePairDataset, load_multitask_data, load_multitask_test_data
 
 from evaluation import model_eval_sst, test_model_multitask
 
 
-TQDM_DISABLE=True
+TQDM_DISABLE=False
 
 # fix the random seed
 def seed_everything(seed=11711):
@@ -51,8 +50,12 @@ class MultitaskBERT(nn.Module):
                 param.requires_grad = False
             elif config.option == 'finetune':
                 param.requires_grad = True
-        ### TODO
-        raise NotImplementedError
+
+        self.dropout = torch.nn.Dropout(config.hidden_dropout_prob)
+        
+        self.sentiment_classifier = nn.Linear(BERT_HIDDEN_SIZE, 5)
+        self.paraphrase_detector = nn.Linear(BERT_HIDDEN_SIZE*2, 1)
+        self.similarity_scorer = nn.Linear(BERT_HIDDEN_SIZE, 1)
 
 
     def forward(self, input_ids, attention_mask):
@@ -61,8 +64,20 @@ class MultitaskBERT(nn.Module):
         # Here, you can start by just returning the embeddings straight from BERT.
         # When thinking of improvements, you can later try modifying this
         # (e.g., by adding other layers).
-        ### TODO
-        raise NotImplementedError
+        pooled_output = self.bert(input_ids=input_ids, attention_mask=attention_mask)['pooler_output']
+        pooled_output = self.dropout(pooled_output)
+        
+        sentiment_logits = self.sentiment_classifier(pooled_output)
+        paraphrase_logits = self.paraphrase_detector(pooled_output)
+
+        similarity_logits = self.similarity_scorer(pooled_output)
+        # similarity_logits = F.cosine_similarity(similarity_score_first, similarity_score_second)
+        
+        return {
+            'sentiment_logits': sentiment_logits,
+            'paraphrase_logits': paraphrase_logits,
+            'similarity_score': similarity_logits
+        }
 
 
     def predict_sentiment(self, input_ids, attention_mask):
@@ -71,9 +86,13 @@ class MultitaskBERT(nn.Module):
         (0 - negative, 1- somewhat negative, 2- neutral, 3- somewhat positive, 4- positive)
         Thus, your output should contain 5 logits for each sentence.
         '''
-        ### TODO
-        raise NotImplementedError
+        output = self.bert(input_ids, attention_mask)
+        pooled_output = output['pooler_output']
+        # pooled_output = self.dropout(pooled_output)
 
+        # MAY WANT TO NORMAILZE
+        sentiment_logits = self.sentiment_classifier(pooled_output)
+        return sentiment_logits
 
     def predict_paraphrase(self,
                            input_ids_1, attention_mask_1,
@@ -82,8 +101,13 @@ class MultitaskBERT(nn.Module):
         Note that your output should be unnormalized (a logit); it will be passed to the sigmoid function
         during evaluation, and handled as a logit by the appropriate loss function.
         '''
-        ### TODO
-        raise NotImplementedError
+        pooled_output_1 = self.bert(input_ids=input_ids_1, attention_mask=attention_mask_1)['pooler_output']
+        pooled_output_2 = self.bert(input_ids=input_ids_2, attention_mask=attention_mask_2)['pooler_output']
+
+        pooled_outputs = torch.cat([pooled_output_1, pooled_output_2], dim=1) # shape [batch_size, 2 * seq_len, hidden_size]
+
+        paraphrase_logits = self.paraphrase_detector(pooled_outputs)
+        return paraphrase_logits.squeeze()
 
 
     def predict_similarity(self,
@@ -93,11 +117,15 @@ class MultitaskBERT(nn.Module):
         Note that your output should be unnormalized (a logit); it will be passed to the sigmoid function
         during evaluation, and handled as a logit by the appropriate loss function.
         '''
-        ### TODO
-        raise NotImplementedError
+        pooled_output_1 = self.bert(input_ids=input_ids_1, attention_mask=attention_mask_1)['pooler_output']
+        pooled_output_2 = self.bert(input_ids=input_ids_2, attention_mask=attention_mask_2)['pooler_output']
 
+        # Compute similarity score
+        # pooled_outputs = F.cosine_similarity(pooled_output_1, pooled_output_2, dim=1)
+        #pooled_outputs = torch.cat([pooled_output_1, pooled_output_2], dim=1)
+        print(similarity_logits.shape)
 
-
+        return similarity_logits.squeeze()
 
 def save_model(model, optimizer, args, config, filepath):
     save_info = {
