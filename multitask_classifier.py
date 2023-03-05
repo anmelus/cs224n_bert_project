@@ -27,10 +27,6 @@ def seed_everything(seed=11711):
     torch.backends.cudnn.benchmark = False
     torch.backends.cudnn.deterministic = True
 
-# def cosine_loss(logits, labels):
-#     cosine_sim = F.cosine_similarity(logits, labels, dim=1)
-#     return torch.mean(1 - cosine_sim)
-
 BERT_HIDDEN_SIZE = 768
 N_SENTIMENT_CLASSES = 5
 
@@ -268,18 +264,16 @@ def train_multitask(args):
         avg_train_loss_para = train_loss_para / num_batches_para
         avg_train_loss_sts = train_loss_sts / num_batches_sts
 
-        if (epoch % 4 == 0 and epoch != 0):
-            print(f"Training Set")
-            paraphrase_accuracy, _, _, sentiment_accuracy, _, _, sts_corr, *_ = model_eval_multitask(sst_train_dataloader, para_train_dataloader, sts_train_dataloader, model, device)
-            print(f"Dev Set")
-            dev_paraphrase_accuracy, _, _, dev_sentiment_accuracy, _, _, dev_sts_corr, *_ = model_eval_multitask(sst_dev_dataloader, para_dev_dataloader, sts_dev_dataloader, model, device)
+        print(f"Training Set")
+        paraphrase_accuracy, _, _, sentiment_accuracy, _, _, sts_corr, *_ = model_eval_multitask(sst_train_dataloader, para_train_dataloader, sts_train_dataloader, model, device)
+        print(f"Dev Set")
+        dev_paraphrase_accuracy, _, _, dev_sentiment_accuracy, _, _, dev_sts_corr, *_ = model_eval_multitask(sst_dev_dataloader, para_dev_dataloader, sts_dev_dataloader, model, device)
 
-            # About ~50 MB each?
             # if (dev_sentiment_accuracy > best_sen_acc) and (dev_paraphrase_accuracy > best_para_acc) and (dev_sts_corr > best_sts_corr):
-            best_sen_acc = dev_sentiment_accuracy
-            best_para_acc = dev_paraphrase_accuracy
-            best_sts_corr = dev_sts_corr
-            save_model(model, optimizer, args, config, args.filepath)
+        best_sen_acc = dev_sentiment_accuracy
+        best_para_acc = dev_paraphrase_accuracy
+        best_sts_corr = dev_sts_corr
+        save_model(model, optimizer, args, config, args.filepath)
             # elif dev_sentiment_accuracy > best_sen_acc:
             #     best_sen_acc = dev_sentiment_accuracy
             #     save_model(model, optimizer, args, config, f'{args.option}-{args.epochs}-{args.lr}-best-sentiment.pt')
@@ -290,9 +284,9 @@ def train_multitask(args):
             #     best_sts_corr = dev_sts_corr
             #     save_model(model, optimizer, args, config, f'{args.option}-{args.epochs}-{args.lr}-best-similarity.pt')
 
-            print(f"Epoch {epoch}: sst train loss :: {avg_train_loss_sst :.3f}, sentiment acc :: {sentiment_accuracy :.3f}, dev sentiment acc :: {dev_sentiment_accuracy :.3f}")
-            print(f"Epoch {epoch}: para train loss :: {avg_train_loss_para :.3f}, para acc :: {paraphrase_accuracy :.3f}, dev para acc :: {dev_paraphrase_accuracy :.3f}")
-            print(f"Epoch {epoch}: sts train loss :: {avg_train_loss_sts :.3f}, sts acc :: {sts_corr :.3f}, dev sts corr :: {dev_sts_corr :.3f}")
+        print(f"Epoch {epoch}: sst train loss :: {avg_train_loss_sst :.3f}, sentiment acc :: {sentiment_accuracy :.3f}, dev sentiment acc :: {dev_sentiment_accuracy :.3f}")
+        print(f"Epoch {epoch}: para train loss :: {avg_train_loss_para :.3f}, para acc :: {paraphrase_accuracy :.3f}, dev para acc :: {dev_paraphrase_accuracy :.3f}")
+        print(f"Epoch {epoch}: sts train loss :: {avg_train_loss_sts :.3f}, sts acc :: {sts_corr :.3f}, dev sts corr :: {dev_sts_corr :.3f}")
 
 def test_model(args):
     with torch.no_grad():
