@@ -30,11 +30,13 @@ def seed_everything(seed=11711):
 BERT_HIDDEN_SIZE = 768
 N_SENTIMENT_CLASSES = 5
 
+# Define the L2 regularization hyperparameter
+l2_lambda = 0.01
+
 
 class MultitaskBERT(nn.Module):
     '''
     This module should use BERT for 3 tasks:
-
     - Sentiment classification (predict_sentiment)
     - Paraphrase detection (predict_paraphrase)
     - Semantic Textual Similarity (predict_similarity)
@@ -44,17 +46,31 @@ class MultitaskBERT(nn.Module):
         # You will want to add layers here to perform the downstream tasks.
         # Pretrain mode does not require updating bert paramters.
         self.bert = BertModel.from_pretrained('bert-base-uncased')
+        self.bertSTS = BertModel.from_pretrained('bert-base-uncased')  # Using separate BERT for finetuning on paraphrase and STS
+
         for param in self.bert.parameters():
             if config.option == 'pretrain':
                 param.requires_grad = False
             elif config.option == 'finetune':
                 param.requires_grad = True
 
+        for param in self.bertSTS.parameters():
+            if config.option == 'pretrain':
+                param.requires_grad = False
+            elif config.option == 'finetune':
+                param.requires_grad = True
+
         self.dropout = torch.nn.Dropout(config.hidden_dropout_prob)
+        self.sentiment_fc1 = nn.Linear(BERT_HIDDEN_SIZE, 64)
+        self.sentiment_fc2 = nn.Linear(64, 5)
+        self.paraphrase_fc1 = nn.Linear(BERT_HIDDEN_SIZE*2, 128)
+        self.paraphrase_fc2 = nn.Linear(128, 1)
+        self.similarity_fc1 = nn.Linear(BERT_HIDDEN_SIZE*2, 128)
+        self.similarity_fc2 = nn.Linear(128, 1)
         
-        self.sentiment_classifier = nn.Linear(BERT_HIDDEN_SIZE, 5)
-        self.paraphrase_detector = nn.Linear(BERT_HIDDEN_SIZE*2, 1)
-        self.similarity_scorer = nn.Linear(BERT_HIDDEN_SIZE*2, 1)
+        #self.sentiment_classifier = nn.Linear(BERT_HIDDEN_SIZE, 5)
+        #self.paraphrase_detector = nn.Linear(BERT_HIDDEN_SIZE*2, 1)
+        #self.similarity_scorer = nn.Linear(BERT_HIDDEN_SIZE*2, 1)
 
 
     def forward(self, input_ids, attention_mask):
@@ -63,18 +79,10 @@ class MultitaskBERT(nn.Module):
         # Here, you can start by just returning the embeddings straight from BERT.
         # When thinking of improvements, you can later try modifying this
         # (e.g., by adding other layers).
-        pooled_output = self.bert(input_ids=input_ids, attention_mask=attention_mask)['pooler_output']
-        pooled_output = self.dropout(pooled_output)
-        
-        sentiment_logits = self.sentiment_classifier(pooled_output)
-        paraphrase_logits = self.paraphrase_detector(pooled_output)
-        similarity_logits = self.similarity_scorer(pooled_output)
-        
-        return {
-            'sentiment_logits': sentiment_logits,
-            'paraphrase_logits': paraphrase_logits,
-            'similarity_score': similarity_logits
-        }
+        output = self.bert(input_ids=input_ids, attention_mask=attention_mask)['pooler_output']
+        output_STS = self.bertSTS(input_ids=input_ids, attention_mask=attention_mask)['pooler_output']
+
+        return output, output_STS
 
 
     def predict_sentiment(self, input_ids, attention_mask):
@@ -83,13 +91,13 @@ class MultitaskBERT(nn.Module):
         (0 - negative, 1- somewhat negative, 2- neutral, 3- somewhat positive, 4- positive)
         Thus, your output should contain 5 logits for each sentence.
         '''
-        output = self.bert(input_ids, attention_mask)
-        pooled_output = output['pooler_output']
-        # pooled_output = self.dropout(pooled_output)
+        pooled_output = self.bert(input_ids, attention_mask)['pooler_output']
 
-        # MAY WANT TO NORMAILZE
-        sentiment_logits = self.sentiment_classifier(pooled_output)
-        return sentiment_logits
+        sentiment_output = self.sentiment_fc1(pooled_output)
+        sentiment_output = nn.ReLU()(sentiment_output)
+        sentiment_output = self.sentiment_fc2(sentiment_output)
+
+        return sentiment_output
 
     def predict_paraphrase(self,
                            input_ids_1, attention_mask_1,
@@ -98,13 +106,18 @@ class MultitaskBERT(nn.Module):
         Note that your output should be unnormalized (a logit); it will be passed to the sigmoid function
         during evaluation, and handled as a logit by the appropriate loss function.
         '''
-        pooled_output_1 = self.bert(input_ids=input_ids_1, attention_mask=attention_mask_1)['pooler_output']
-        pooled_output_2 = self.bert(input_ids=input_ids_2, attention_mask=attention_mask_2)['pooler_output']
+        pooled_output_1 = self.bertSTS(input_ids=input_ids_1, attention_mask=attention_mask_1)['pooler_output']
+        pooled_output_1 = self.dropout(pooled_output_1)
+        pooled_output_2 = self.bertSTS(input_ids=input_ids_2, attention_mask=attention_mask_2)['pooler_output']
+        pooled_output_2 = self.dropout(pooled_output_2)
 
         pooled_outputs = torch.cat([pooled_output_1, pooled_output_2], dim=1) # shape [batch_size, 2 * seq_len, hidden_size]
 
-        paraphrase_logits = self.paraphrase_detector(pooled_outputs)
-        return paraphrase_logits.squeeze()
+        paraphrase_output = self.paraphrase_fc1(pooled_outputs)
+        paraphrase_output = nn.ReLU()(paraphrase_output)
+        paraphrase_output = self.paraphrase_fc2(paraphrase_output)
+        
+        return paraphrase_output.squeeze()
 
 
     def predict_similarity(self,
@@ -113,14 +126,19 @@ class MultitaskBERT(nn.Module):
         '''Given a batch of pairs of sentences, outputs a single logit corresponding to how similar they are.
            WE WANT TO APPLY THE SIGMOID to scale from 0 to 1 then multiply by 5
         '''
-        pooled_output_1 = self.bert(input_ids=input_ids_1, attention_mask=attention_mask_1)['pooler_output']
-        pooled_output_2 = self.bert(input_ids=input_ids_2, attention_mask=attention_mask_2)['pooler_output']
+        pooled_output_1 = self.bertSTS(input_ids=input_ids_1, attention_mask=attention_mask_1)['pooler_output']
+        pooled_output_1 = self.dropout(pooled_output_1)
+        pooled_output_2 = self.bertSTS(input_ids=input_ids_2, attention_mask=attention_mask_2)['pooler_output']
+        pooled_output_2 = self.dropout(pooled_output_2)
 
         pooled_outputs= torch.cat([pooled_output_1, pooled_output_2], dim=1)
 
-        similarity_logits = self.similarity_scorer(pooled_outputs)
-        similarity_logits = torch.sigmoid(similarity_logits) * 5
-        return similarity_logits.squeeze()
+        similarity_output = self.similarity_fc1(pooled_outputs)
+        similarity_output = nn.ReLU()(similarity_output)
+        similarity_output = self.similarity_fc2(similarity_output)
+
+        similarity_output = torch.sigmoid(similarity_output) * 5
+        return similarity_output.squeeze()
 
 def save_model(model, optimizer, args, config, filepath):
     save_info = {
@@ -191,6 +209,12 @@ def train_multitask(args):
     best_para_acc = 0
     best_sts_corr = 0
 
+    # Compute the L2 regularization term
+    l2_reg = torch.tensor(0.).cuda()
+    for param in model.parameters():
+        l2_reg += torch.norm(param)
+
+    
     # Run for the specified number of epochs
     for epoch in range(args.epochs):
         model.train()
@@ -215,8 +239,9 @@ def train_multitask(args):
             logits_sst = model.predict_sentiment(b_ids_sst, b_mask_sst)
             
             loss_sst = F.cross_entropy(logits_sst, b_labels_sst.view(-1), reduction='sum') / args.batch_size
+            loss_sst += l2_lambda * l2_reg
 
-            loss_sst.backward()
+            loss_sst.backward(retain_graph=True)
             optimizer.step()
 
             train_loss_sst += loss_sst.item()
@@ -234,12 +259,15 @@ def train_multitask(args):
 
             logits_para = model.predict_paraphrase(b_ids_para_1, b_mask_para_1, b_ids_para_2, b_mask_para_2)
             loss_para = F.binary_cross_entropy_with_logits(logits_para, b_labels_para.view(-1).float(), reduction='sum') / args.batch_size
+            loss_para += l2_lambda * l2_reg
 
-            loss_para.backward()
+            loss_para.backward(retain_graph=True)
             optimizer.step()
 
             train_loss_para += loss_para.item()
             num_batches_para += 1
+
+            optimizer.zero_grad()
 
             # Textual Similarity Task
             b_ids_sts_1, b_mask_sts_1, b_ids_sts_2, b_mask_sts_2, b_labels_sts = (batch_sts['token_ids_1'], batch_sts['attention_mask_1'], 
@@ -252,9 +280,10 @@ def train_multitask(args):
             b_labels_sts = b_labels_sts.to(device)
 
             logits_sts = model.predict_similarity(b_ids_sts_1, b_mask_sts_1, b_ids_sts_2, b_mask_sts_2)
-            loss_sts = F.mse_loss(logits_sts.view(-1,1), b_labels_sts.view(-1,1).float())
+            loss_sts = F.mse_loss(logits_sts.view(-1,1), b_labels_sts.view(-1,1).float(), reduction='sum') / args.batch_size
+            loss_sts += l2_lambda * l2_reg
 
-            loss_sts.backward()
+            loss_sts.backward(retain_graph=True)
             optimizer.step()
 
             train_loss_sts += loss_sts.item()
@@ -264,29 +293,32 @@ def train_multitask(args):
         avg_train_loss_para = train_loss_para / num_batches_para
         avg_train_loss_sts = train_loss_sts / num_batches_sts
 
-        print(f"Training Set")
-        paraphrase_accuracy, _, _, sentiment_accuracy, _, _, sts_corr, *_ = model_eval_multitask(sst_train_dataloader, para_train_dataloader, sts_train_dataloader, model, device)
-        print(f"Dev Set")
-        dev_paraphrase_accuracy, _, _, dev_sentiment_accuracy, _, _, dev_sts_corr, *_ = model_eval_multitask(sst_dev_dataloader, para_dev_dataloader, sts_dev_dataloader, model, device)
+        print(avg_train_loss_sst, avg_train_loss_para, avg_train_loss_sts)
 
-            # if (dev_sentiment_accuracy > best_sen_acc) and (dev_paraphrase_accuracy > best_para_acc) and (dev_sts_corr > best_sts_corr):
-        best_sen_acc = dev_sentiment_accuracy
-        best_para_acc = dev_paraphrase_accuracy
-        best_sts_corr = dev_sts_corr
-        save_model(model, optimizer, args, config, args.filepath)
-            # elif dev_sentiment_accuracy > best_sen_acc:
-            #     best_sen_acc = dev_sentiment_accuracy
-            #     save_model(model, optimizer, args, config, f'{args.option}-{args.epochs}-{args.lr}-best-sentiment.pt')
-            # elif dev_paraphrase_accuracy > best_para_acc:
-            #     best_para_acc = dev_paraphrase_accuracy
-            #     save_model(model, optimizer, args, config, f'{args.option}-{args.epochs}-{args.lr}-best-paraphrase.pt')
-            # elif dev_sts_corr > best_sts_corr:
-            #     best_sts_corr = dev_sts_corr
-            #     save_model(model, optimizer, args, config, f'{args.option}-{args.epochs}-{args.lr}-best-similarity.pt')
+        if (epoch == 6):
+            print(f"Training Set")
+            paraphrase_accuracy, _, _, sentiment_accuracy, _, _, sts_corr, *_ = model_eval_multitask(sst_train_dataloader, para_train_dataloader, sts_train_dataloader, model, device)
+            print(f"Dev Set")
+            dev_paraphrase_accuracy, _, _, dev_sentiment_accuracy, _, _, dev_sts_corr, *_ = model_eval_multitask(sst_dev_dataloader, para_dev_dataloader, sts_dev_dataloader, model, device)
 
-        print(f"Epoch {epoch}: sst train loss :: {avg_train_loss_sst :.3f}, sentiment acc :: {sentiment_accuracy :.3f}, dev sentiment acc :: {dev_sentiment_accuracy :.3f}")
-        print(f"Epoch {epoch}: para train loss :: {avg_train_loss_para :.3f}, para acc :: {paraphrase_accuracy :.3f}, dev para acc :: {dev_paraphrase_accuracy :.3f}")
-        print(f"Epoch {epoch}: sts train loss :: {avg_train_loss_sts :.3f}, sts acc :: {sts_corr :.3f}, dev sts corr :: {dev_sts_corr :.3f}")
+                # if (dev_sentiment_accuracy > best_sen_acc) and (dev_paraphrase_accuracy > best_para_acc) and (dev_sts_corr > best_sts_corr):
+            best_sen_acc = dev_sentiment_accuracy
+            best_para_acc = dev_paraphrase_accuracy
+            best_sts_corr = dev_sts_corr
+            save_model(model, optimizer, args, config, args.filepath)
+                # elif dev_sentiment_accuracy > best_sen_acc:
+                #     best_sen_acc = dev_sentiment_accuracy
+                #     save_model(model, optimizer, args, config, f'{args.option}-{args.epochs}-{args.lr}-best-sentiment.pt')
+                # elif dev_paraphrase_accuracy > best_para_acc:
+                #     best_para_acc = dev_paraphrase_accuracy
+                #     save_model(model, optimizer, args, config, f'{args.option}-{args.epochs}-{args.lr}-best-paraphrase.pt')
+                # elif dev_sts_corr > best_sts_corr:
+                #     best_sts_corr = dev_sts_corr
+                #     save_model(model, optimizer, args, config, f'{args.option}-{args.epochs}-{args.lr}-best-similarity.pt')
+
+            print(f"Epoch {epoch}: sst train loss :: {avg_train_loss_sst :.3f}, sentiment acc :: {sentiment_accuracy :.3f}, dev sentiment acc :: {dev_sentiment_accuracy :.3f}")
+            print(f"Epoch {epoch}: para train loss :: {avg_train_loss_para :.3f}, para acc :: {paraphrase_accuracy :.3f}, dev para acc :: {dev_paraphrase_accuracy :.3f}")
+            print(f"Epoch {epoch}: sts train loss :: {avg_train_loss_sts :.3f}, sts acc :: {sts_corr :.3f}, dev sts corr :: {dev_sts_corr :.3f}")
 
 def test_model(args):
     with torch.no_grad():
