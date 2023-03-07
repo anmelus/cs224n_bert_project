@@ -67,10 +67,6 @@ class MultitaskBERT(nn.Module):
         self.paraphrase_fc2 = nn.Linear(128, 1)
         self.similarity_fc1 = nn.Linear(BERT_HIDDEN_SIZE*2, 128)
         self.similarity_fc2 = nn.Linear(128, 1)
-        
-        #self.sentiment_classifier = nn.Linear(BERT_HIDDEN_SIZE, 5)
-        #self.paraphrase_detector = nn.Linear(BERT_HIDDEN_SIZE*2, 1)
-        #self.similarity_scorer = nn.Linear(BERT_HIDDEN_SIZE*2, 1)
 
 
     def forward(self, input_ids, attention_mask):
@@ -138,7 +134,7 @@ class MultitaskBERT(nn.Module):
         similarity_output = self.similarity_fc2(similarity_output)
 
         similarity_output = torch.sigmoid(similarity_output) * 5
-        return similarity_output.squeeze()
+        return similarity_output.squeeze() #
 
 def save_model(model, optimizer, args, config, filepath):
     save_info = {
