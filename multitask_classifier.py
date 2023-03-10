@@ -221,8 +221,7 @@ def train_multitask(args):
         num_batches_para = 0
         num_batches_sts = 0
 
-        for batch_sst, batch_para, batch_sts in tqdm(zip(sst_train_dataloader, para_train_dataloader, sts_train_dataloader), 
-                                                      desc=f'train-{epoch}', disable=TQDM_DISABLE):
+        for batch_sst in tqdm(sst_train_dataloader, desc=f'train-{epoch}', disable=TQDM_DISABLE):
             # Sentiment analysis task
             b_ids_sst, b_mask_sst, b_labels_sst = (batch_sst['token_ids'],
                                                    batch_sst['attention_mask'], batch_sst['labels'])
@@ -231,18 +230,19 @@ def train_multitask(args):
             b_mask_sst = b_mask_sst.to(device)
             b_labels_sst = b_labels_sst.to(device)
 
-            optimizer.zero_grad()
             logits_sst = model.predict_sentiment(b_ids_sst, b_mask_sst)
             
             loss_sst = F.cross_entropy(logits_sst, b_labels_sst.view(-1), reduction='sum') / args.batch_size
             loss_sst += l2_lambda * l2_reg
 
+            optimizer.zero_grad()
             loss_sst.backward(retain_graph=True)
             optimizer.step()
 
             train_loss_sst += loss_sst.item()
             num_batches_sst += 1
 
+        for batch_para in tqdm(para_train_dataloader, desc=f'train-{epoch}', disable=TQDM_DISABLE):
             # Paraphrase detection task
             b_ids_para_1, b_mask_para_1, b_ids_para_2, b_mask_para_2, b_labels_para = (batch_para['token_ids_1'], batch_para['attention_mask_1'], 
                                                                                        batch_para['token_ids_2'], batch_para['attention_mask_2'], batch_para['labels'])
@@ -257,14 +257,15 @@ def train_multitask(args):
             loss_para = F.binary_cross_entropy_with_logits(logits_para, b_labels_para.view(-1).float(), reduction='sum') / args.batch_size
             loss_para += l2_lambda * l2_reg
 
+            optimizer.zero_grad()
             loss_para.backward(retain_graph=True)
             optimizer.step()
 
             train_loss_para += loss_para.item()
             num_batches_para += 1
 
-            optimizer.zero_grad()
-
+        # Consider separating training tasks
+        for batch_sts in tqdm(sts_train_dataloader, desc=f'train-{epoch}', disable=TQDM_DISABLE):    
             # Textual Similarity Task
             b_ids_sts_1, b_mask_sts_1, b_ids_sts_2, b_mask_sts_2, b_labels_sts = (batch_sts['token_ids_1'], batch_sts['attention_mask_1'], 
                                                     batch_sts['token_ids_2'], batch_sts['attention_mask_2'], batch_sts['labels'])
@@ -279,6 +280,7 @@ def train_multitask(args):
             loss_sts = F.mse_loss(logits_sts.view(-1,1), b_labels_sts.view(-1,1).float(), reduction='sum') / args.batch_size
             loss_sts += l2_lambda * l2_reg
 
+            optimizer.zero_grad()
             loss_sts.backward(retain_graph=True)
             optimizer.step()
 
@@ -291,30 +293,19 @@ def train_multitask(args):
 
         print(avg_train_loss_sst, avg_train_loss_para, avg_train_loss_sts)
 
-        if (epoch == 6):
-            print(f"Training Set")
-            paraphrase_accuracy, _, _, sentiment_accuracy, _, _, sts_corr, *_ = model_eval_multitask(sst_train_dataloader, para_train_dataloader, sts_train_dataloader, model, device)
-            print(f"Dev Set")
-            dev_paraphrase_accuracy, _, _, dev_sentiment_accuracy, _, _, dev_sts_corr, *_ = model_eval_multitask(sst_dev_dataloader, para_dev_dataloader, sts_dev_dataloader, model, device)
+    print(f"Training Set")
+    paraphrase_accuracy, _, _, sentiment_accuracy, _, _, sts_corr, *_ = model_eval_multitask(sst_train_dataloader, para_train_dataloader, sts_train_dataloader, model, device)
+    print(f"Dev Set")
+    dev_paraphrase_accuracy, _, _, dev_sentiment_accuracy, _, _, dev_sts_corr, *_ = model_eval_multitask(sst_dev_dataloader, para_dev_dataloader, sts_dev_dataloader, model, device)
 
-                # if (dev_sentiment_accuracy > best_sen_acc) and (dev_paraphrase_accuracy > best_para_acc) and (dev_sts_corr > best_sts_corr):
-            best_sen_acc = dev_sentiment_accuracy
-            best_para_acc = dev_paraphrase_accuracy
-            best_sts_corr = dev_sts_corr
-            save_model(model, optimizer, args, config, args.filepath)
-                # elif dev_sentiment_accuracy > best_sen_acc:
-                #     best_sen_acc = dev_sentiment_accuracy
-                #     save_model(model, optimizer, args, config, f'{args.option}-{args.epochs}-{args.lr}-best-sentiment.pt')
-                # elif dev_paraphrase_accuracy > best_para_acc:
-                #     best_para_acc = dev_paraphrase_accuracy
-                #     save_model(model, optimizer, args, config, f'{args.option}-{args.epochs}-{args.lr}-best-paraphrase.pt')
-                # elif dev_sts_corr > best_sts_corr:
-                #     best_sts_corr = dev_sts_corr
-                #     save_model(model, optimizer, args, config, f'{args.option}-{args.epochs}-{args.lr}-best-similarity.pt')
+    best_sen_acc = dev_sentiment_accuracy
+    best_para_acc = dev_paraphrase_accuracy
+    best_sts_corr = dev_sts_corr
+    save_model(model, optimizer, args, config, args.filepath)
 
-            print(f"Epoch {epoch}: sst train loss :: {avg_train_loss_sst :.3f}, sentiment acc :: {sentiment_accuracy :.3f}, dev sentiment acc :: {dev_sentiment_accuracy :.3f}")
-            print(f"Epoch {epoch}: para train loss :: {avg_train_loss_para :.3f}, para acc :: {paraphrase_accuracy :.3f}, dev para acc :: {dev_paraphrase_accuracy :.3f}")
-            print(f"Epoch {epoch}: sts train loss :: {avg_train_loss_sts :.3f}, sts acc :: {sts_corr :.3f}, dev sts corr :: {dev_sts_corr :.3f}")
+    print(f"Epoch {epoch}: sst train loss :: {avg_train_loss_sst :.3f}, sentiment acc :: {sentiment_accuracy :.3f}, dev sentiment acc :: {dev_sentiment_accuracy :.3f}")
+    print(f"Epoch {epoch}: para train loss :: {avg_train_loss_para :.3f}, para acc :: {paraphrase_accuracy :.3f}, dev para acc :: {dev_paraphrase_accuracy :.3f}")
+    print(f"Epoch {epoch}: sts train loss :: {avg_train_loss_sts :.3f}, sts acc :: {sts_corr :.3f}, dev sts corr :: {dev_sts_corr :.3f}")
 
 def test_model(args):
     with torch.no_grad():
