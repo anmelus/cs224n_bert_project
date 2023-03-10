@@ -150,10 +150,6 @@ def model_eval_multitask(sentiment_dataloader,
             sst_sent_ids.extend(b_sent_ids)
 
         sentiment_accuracy = np.mean(np.array(sst_y_pred) == np.array(sst_y_true))
-
-        print(sst_y_true)
-        print(sst_y_pred)
-
         sentiment_precision, sentiment_recall, sentiment_f1, _ = precision_recall_fscore_support(sst_y_true, sst_y_pred, average='weighted')
 
         print(f'Paraphrase detection accuracy: {paraphrase_accuracy:.3f}')

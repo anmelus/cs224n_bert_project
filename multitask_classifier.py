@@ -32,7 +32,32 @@ N_SENTIMENT_CLASSES = 5
 
 # Define the L2 regularization hyperparameter
 l2_lambda = 0.01
+siar_lambda = 0.001
 
+# Helper functions
+def smoothness_regularization(x, x_hat, logits, eps=0.1, p=2):
+    # Calculate the maximum distance between xi and all xj in the batch
+    x_float = x.float()
+    max_dist = torch.max(torch.norm(x_float - x_float[:, None], dim=2, p=p), dim=1).values
+
+    # Calculate the distance between x and its perturbed version x_hat
+    dist = torch.norm(x_float - x_hat, p=p, dim=1)
+
+    # Calculate the regularization loss
+    reg_loss = torch.clamp(dist - eps * max_dist, min=0)
+
+    # Calculate the mean regularization loss across the batch
+    reg_loss_mean = torch.mean(reg_loss)
+
+    return siar_lambda * reg_loss_mean
+
+def add_noise(x, noise_level):
+    """
+    Adds Gaussian noise to the input data x.
+
+    """
+    noise = torch.randn(x.size()).cuda() * noise_level
+    return x + noise
 
 class MultitaskBERT(nn.Module):
     '''
@@ -210,7 +235,9 @@ def train_multitask(args):
     for param in model.parameters():
         l2_reg += torch.norm(param)
 
-    
+    # Counter for Early Stopping, Half Learning Rate
+    counter = 0
+
     # Run for the specified number of epochs
     for epoch in range(args.epochs):
         model.train()
@@ -278,6 +305,15 @@ def train_multitask(args):
 
             logits_sts = model.predict_similarity(b_ids_sts_1, b_mask_sts_1, b_ids_sts_2, b_mask_sts_2)
             loss_sts = F.mse_loss(logits_sts.view(-1,1), b_labels_sts.view(-1,1).float(), reduction='sum') / args.batch_size
+
+            # mnrl_loss = losses.MultipleNegativesRankingLoss()
+            # loss_sts = mnrl_loss(logits_sts, b_labels_sts)
+            # x = torch.cat((b_ids_sts_1, b_ids_sts_2), dim=1)
+            # x_hat = add_noise(x, 0.1)
+            # # Add adversarial regularization term to loss function
+            # siar_loss = smoothness_regularization(x, x_hat, logits_sts, eps=0.1, p=2)
+            # loss_sts += siar_loss
+
             loss_sts += l2_lambda * l2_reg
 
             optimizer.zero_grad()
@@ -293,20 +329,40 @@ def train_multitask(args):
 
         print(avg_train_loss_sst, avg_train_loss_para, avg_train_loss_sts)
 
-    print(f"Training Set")
-    paraphrase_accuracy, _, _, sentiment_accuracy, _, _, sts_corr, *_ = model_eval_multitask(sst_train_dataloader, para_train_dataloader, sts_train_dataloader, model, device)
-    print(f"Dev Set")
-    dev_paraphrase_accuracy, _, _, dev_sentiment_accuracy, _, _, dev_sts_corr, *_ = model_eval_multitask(sst_dev_dataloader, para_dev_dataloader, sts_dev_dataloader, model, device)
+        print(f"Training Set")
+        paraphrase_accuracy, _, _, sentiment_accuracy, _, _, sts_corr, *_ = model_eval_multitask(sst_train_dataloader, para_train_dataloader, sts_train_dataloader, model, device)
+        print(f"Dev Set")
+        dev_paraphrase_accuracy, _, _, dev_sentiment_accuracy, _, _, dev_sts_corr, *_ = model_eval_multitask(sst_dev_dataloader, para_dev_dataloader, sts_dev_dataloader, model, device)
 
-    best_sen_acc = dev_sentiment_accuracy
-    best_para_acc = dev_paraphrase_accuracy
-    best_sts_corr = dev_sts_corr
-    save_model(model, optimizer, args, config, args.filepath)
+        total_average = (dev_paraphrase_accuracy + dev_sentiment_accuracy + dev_sts_corr) / 3
+        best_average = (dev_paraphrase_accuracy + best_para_acc + best_sts_corr) / 3
 
-    print(f"Epoch {epoch}: sst train loss :: {avg_train_loss_sst :.3f}, sentiment acc :: {sentiment_accuracy :.3f}, dev sentiment acc :: {dev_sentiment_accuracy :.3f}")
-    print(f"Epoch {epoch}: para train loss :: {avg_train_loss_para :.3f}, para acc :: {paraphrase_accuracy :.3f}, dev para acc :: {dev_paraphrase_accuracy :.3f}")
-    print(f"Epoch {epoch}: sts train loss :: {avg_train_loss_sts :.3f}, sts acc :: {sts_corr :.3f}, dev sts corr :: {dev_sts_corr :.3f}")
+        print(f"Epoch {epoch}: sst train loss :: {avg_train_loss_sst :.3f}, sentiment acc :: {sentiment_accuracy :.3f}, dev sentiment acc :: {dev_sentiment_accuracy :.3f}")
+        print(f"Epoch {epoch}: para train loss :: {avg_train_loss_para :.3f}, para acc :: {paraphrase_accuracy :.3f}, dev para acc :: {dev_paraphrase_accuracy :.3f}")
+        print(f"Epoch {epoch}: sts train loss :: {avg_train_loss_sts :.3f}, sts acc :: {sts_corr :.3f}, dev sts corr :: {dev_sts_corr :.3f}")
 
+        # Early Stopping Implementation
+        if (total_average > best_average):
+            best_sen_acc = dev_sentiment_accuracy
+            best_para_acc = dev_paraphrase_accuracy
+            best_sts_corr = dev_sts_corr
+        
+            counter = 0
+            save_model(model, optimizer, args, config, args.filepath)
+
+        elif (counter >= 12):
+            # End training to prevent overfitting
+            break
+
+        elif (counter >= 5):
+            # Half Learning Rate
+            lr = lr/2
+            optimizer = AdamW(model.parameters(), lr=lr)
+            counter += 1
+
+        else:
+            counter += 1
+        
 def test_model(args):
     with torch.no_grad():
         device = torch.device('cuda') if args.use_gpu else torch.device('cpu')
