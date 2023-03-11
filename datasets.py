@@ -245,7 +245,7 @@ def load_multitask_test_data():
 
 
 
-def load_multitask_data(sentiment_filename,paraphrase_filename,similarity_filename,split='train'):
+def load_multitask_data(sentiment_filename,paraphrase_filename,similarity_filename,sts_addl_filename,split='train'):
     sentiment_data = []
     num_labels = {}
     if split == 'test':
@@ -298,6 +298,14 @@ def load_multitask_data(sentiment_filename,paraphrase_filename,similarity_filena
                                         ,sent_id))
     else:
         with open(similarity_filename, 'r', encoding='utf8') as fp:
+            for record in csv.DictReader(fp,delimiter = '\t'):
+                sent_id = record['id'].lower().strip()
+                similarity_data.append((preprocess_string(record['sentence1']),
+                                        preprocess_string(record['sentence2']),
+                                        float(record['similarity']),sent_id))
+                                        
+        # added ability to open addition sts data for training
+        with open(sts_addl_filename, 'r', encoding='utf8') as fp:
             for record in csv.DictReader(fp,delimiter = '\t'):
                 sent_id = record['id'].lower().strip()
                 similarity_data.append((preprocess_string(record['sentence1']),
