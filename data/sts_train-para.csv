@@ -1,0 +1,717 @@
+	id	sentence1	sentence2	similarity
+201	9ee4d44188c33f4e7d899e690	Someone is slicing tortila's.	Someone is riding a horse.	0.0
+7936	f4c5e3b0acd70cbfa99b58ac2	No it does not affect your ratings.	No it is not.	0.0
+1388	9753582bf8f5894a65f74ab24	A young girl wearing a bike helmet with a bicycle in the background.	A women holds a small dog on a leash with chairs in the background.	0.0
+467	fa8a49a239d979dc97018eced	A cat is drinking some water.	A truck is going down a hill.	0.0
+416	3f33ec9a088d92efb5dfbddf2	A person is peeling a potato.	A cat is licking a small bottle.	0.0
+8105	ac9673ac6be08f5567b78d6f7	Microwave would be your best bet.	Your best bet is research.	0.0
+5723	eadf9cb8eaae282352e0fc72f	China's generous 1MDB bid seen reaping it big returns in Malaysia	China keeps an eye on visiting tiger freed by Russian President	0.0
+1902	ec99ce79336e385dcc7580176	A woman holding a newspaper.	A man rollerblading on a metal bar.	0.0
+702	718ae9559fcefb054890c3458	A man is playing a flute.	A woman is applying eye liner.	0.0
+4472	c1e86791e91d4d540671e607d	Boy Scouts delay decision on admitting gays	Boy Scouts of America delays vote on lifting ban on gays	1.0
+5643	c7dfa36710361010c9ae88c38	Malaysia Airlines plane crashes on Ukraine-Russia border - live	US: Russia Massing Troops on Ukraine Border	0.0
+5987	a0ddb1cf663a4d308f31d83a0	A man plays the guitar and sings.	A man is singing and playing a guitar.	1.0
+5814	93db548149540ce947e38d8ad	A man is making a bed.	A woman is playing a guitar.	0.0
+2385	e8cbf945733a394ac6ce5dbb4	I hope everything is OK!	I hope everything is okay.	1.0
+3548	e687db7cd4dd81897ca192555	syria denies having an undeclared nuclear program. 	syria denies the existence of an undeclared nuclear program.	1.0
+3813	4c2b3928824ad9c818c3d21f0	Rimsha Masih released on bail	Mandela released from hospital	0.0
+542	55d812d1b63222879a2022c48	A man dives into a pool.	A man is diving into a pool.	1.0
+5749	781d9ddccc8e4b846c5243335	A man with a hard hat is dancing.	A man wearing a hard hat is dancing.	1.0
+7880	14dae3d300d8b5dc7180db457	You do not need to worry.	You don't have to worry.	1.0
+6584	db2eddf490ac3fd88934e0b56	Cover the entrance to the doorway with a old carpet and use a staple guns to secure it.	I started to dig into this because you caught my curiosity itch with the question...	0.0
+5642	40ed030173da28dcf04120224	Murray ends 77-year wait for British win	Murray wins Wimbledon title ends Britains 77year agony	1.0
+2805	dbc5250605fa85a5a1d060328	Druce will face murder charges, Conte said.	Conte said Druce will be charged with murder.	1.0
+5716	08c69cae6df3eb63b3f90e5d0	Li Na to announce retirement	US Senator Ted Cruz to announce presidential bid	0.0
+1181	18da69454e4fb142ab8fef629	A man sitting on the grass looking toward the sky.	The man is standing on the sidewalk in front of the horse.	0.0
+2226	45c08fd9b7a76292ac359e508	"""Would you like to pay for others health care?"""	"""Would you like to wear your seatbelt?"""	0.0
+7588	27bbe7cd5a90260f99dfdf05c	A woman stands in front of a building in the snow.	Two women and a baby pose in front of a dining room.	0.0
+3902	38dbaf32f015912fa34569fe7	Mali future interim president readies to take office	Pope rips into dissident priests on celibacy	0.0
+469	1dbccd8139e3561f2c8e6b81b	The man sat in his chair and stared.	The little girl is putting her hair into a pony tail.	0.0
+5508	2a0db8950fc6c9dba0f3042da	AstraZeneca pays $4.1bn to buy Bristol-Myers Squibb out of diabetes alliance	AstraZeneca to buy Bristol out of diabetes venture for up to $4.1 billion	1.0
+3726	df111db3af805ffc00d6e4472	the book states that the drug conveys a completely positive image. 	the official stated that this was a complete technology transfer.	0.0
+6546	25b4eb88b90130e44f12ede84	Different parts of California have different wildlife, so you should probably narrow the region.	You can get a rough estimate from using an online calorie estimation website.	0.0
+8116	000e25cb3c0db66c9204ffbd8	Yes, you should make a résumé.	Yes, you should talk to your professor.	0.0
+4148	aaa90a90c58345ccbe85d3490	Brazil's 'pop-star priest' gets mammoth new stage	Brazil's 'Pop-Star Priest' Gets Mammoth New Stage	1.0
+1382	54cb8a41b18071df6fb12322f	A wooden bicycle with an awning.	A group of elderly people sitting around a dining table.	0.0
+2575	229f9d83841a747001d84b298	Sendmail said the system can even be set up to permit business-only usage.	The product can be instructed to permit business-only use, according to Sendmail.	1.0
+864	dd6edbe087af1061e93cdbaa4	A man is playing guitar.	Smeone is laying down.	0.0
+6214	58fb44462e1db23cd2486fdcb	A man wearing US flag boxer shorts is standing on a stairway.	A woman wearing a white shirt stands on the street.	0.0
+5412	f9711858b6f62cabc579e5515	Pro-Russia rebels to hold vote in Ukraine	Syria rebels: We killed Hezbollah men in Lebanon	0.0
+5576	631336c5b8fa6c106f934205e	Venezuela lawmakers brawl amid election tensions	Venezuela lawmakers brawl over election	1.0
+5470	06c3de6fa996fc5fe435fb0ae	Turkey president appeals for calm	Texas house provisionally approves abortion law	0.0
+3601	40acb44efbc15042742fc387f	the mexican government has adopted a series of measures against drug trafficking and organized crime within mexico since 2006. 	since 2006 mexico has adopted a series of measures against drug trafficking and organized crimes.	1.0
+5613	ee0a587d11cc1ad3f7a4d7b25	North Korea says to put US citizen on trial	North Korea says detained American tourist to face trial	1.0
+5103	35830f28ff1a2459d1f45d3d8	Rudd sworn in as new Australian PM	Muslims in hiding as sectarian ...	0.0
+990	1146ceeddbb7d0b1a86a06b1e	A little girl plays the violin on a beach.	The girl sat on the couch to crochet.	0.0
+1651	9f70354dbc7f76a062cf11dbe	Two men are setting up some electronic equpitment	Two dogs are wrestling on the ground in the snow.	0.0
+6240	86685cc59175a1dc192ddc0cb	a young boy climbing on a rock wall	Five greyhounds are racing on a sand track.	0.0
+6542	069f0412078fa9f9fc6d7aef0	An embolism in a medical context refers to any large moving mass or defect in the blood stream.	Here is an interesting article on wikipedia to give overview of pressure related injuries.	0.0
+2960	c2ad2a16e807605c9a6061ba2	The hearing occurred a day after the Pentagon for the first time singled out an officer, Dallager, for not addressing the scandal.	The hearing came one day after the Pentagon for the first time singled out an officer - Dallager - for failing to address the scandal.	1.0
+7490	8196a33f1b5c913ac855dba04	A chimp is kicking a target.	A woman is putting oil into a skillet.	0.0
+7389	0eab0362e2beb882ad8af8b67	A man plays a guitar.	A man is playing a guitar.	1.0
+5751	79f5687baf254f07753c9b313	A man is feeding a mouse to a snake.	The man is feeding a mouse to the snake.	1.0
+5628	1b09833d9e988a62950ed7bd1	At least 18 killed in Iraq mosque bombing	More than 60 killed at Iraq funeral	0.0
+6423	7c588509cc333b248743ebc16	Since this is a relatively new problem for behavioral researchers, I don't know that there is a common consensus.	I'll address just the first of your three sub-questions, the others have been answered by Chuck Sherrington.	0.0
+2367	f7775dcbcecc3d2dcde92ac71	Ha, ha, ha, ha, ha, ha!	Ah ha, ha, ha, ha, ha!	1.0
+427	21dd6466424651b28eb7f72c7	Plastic toys are floating in water.	The ladies are performing a dance.	0.0
+7480	50ddac8e014521275f0409ae4	A woman is cutting an onion.	A horse is standing.	0.0
+4804	e388d4e4cafc42df309798c86	Gunmen ambush police boat in Nigeria oil region	Sudanese police block protest at human rights commission	0.0
+1335	3490b95297d713f11ed2af893	A person in a red cap standing next to a brick support beam.	A brown horse is standing on grass and scrub.	0.0
+7251	fd679df967223c72382c74131	One woman is measuring another woman's ankle.	A woman measures another woman's ankle.	1.0
+1502	5e71c548181c75859c09b7b21	A brown dog digging a hole in front of a plant	A group of people walking on the side of a railroad track.	0.0
+1692	1e15ee140f532e070d0172b48	A grey hound is active in a grassy field.	A bunch of bikes racing on a track.	0.0
+8569	d2f73d5bc2ed72a52ad297519	Car bomb at Swedish consulate in Libya's Benghazi, no casualties	Car Bomb Hits Swedish Consulate in Benghazi, None Hurt	1.0
+1271	2e9398a968197078260fd7411	A mallard and a tame white duck on the grass near water.	A small child in a pink dress sits on a table.	0.0
+8057	e8083e9b430ea6125a9af709f	A few more point to think about:	A few things to think about:	1.0
+908	3da60e493ffb28c1bb18260f6	A woman is cutting scallions.	A woman falls on a sand castle.	0.0
+5430	e5d444f714fe32b822044954d	Iran Nuclear Talks Enter Third Day	Iran nuclear talks enter crucial third day	1.0
+7329	62e8c12e3465cb339ac458bba	A man is opening a box and taking out paper.	A woman is peeling a potato.	0.0
+4049	fc97d9ab9519db0abc84c377d	Australian among four on plane missing in Indonesia	Iranian painter Mansoureh Hosseini dies	0.0
+6683	f7758ff59b2bd807ae6d787c5	"First, we must consider that ""Sphere"" is less Hard SF and more soft SF, thriller, airport novel and such."	"""Fins"" on real spacecraft are usually for one of two purposes: solar panels or thermal radiators."	0.0
+5721	38ee79ad0b488c192b8113667	Plane Crash Site Search Called off for the Night	Tour De France Pack Sets off for Stage 15	0.0
+452	aa673fbedb20539e1e9518d10	A woman is stirring two eggs in a glass bowl.	A young girl is singing on a stage.	0.0
+1703	9bd716cc0df28dfc723e213f3	Three dogs pulling a man on a bicycle through the snow.	The dogs are pulling a man on a type of bike, through the snow.	1.0
+6033	fc81490d1bc90c9c884bf4c90	Brown and white ducks walking on green grass.	A red and white plane flying on a sunny day.	0.0
+5710	ee801985ab447b0c84aa45952	Kranjcar leaves it late to rescue QPR against Moses-inspired Stoke	Harry Kane leaves it late to rescue a point for Tottenham Hotspur	0.0
+6236	7f62e71c99aaaa1cbad391a9e	A skier is jumping in the air over a snowfield near a mountain range.	A woman is sitting near a flower bed overlooking a tunnel.	0.0
+417	c0f815bd6129c9307b5262170	A cat is jumping into a box.	A young man is talking to a leaf.	0.0
+221	bdf9c9d33b7b1838df02d31f5	A man is swimming.	A woman is slicing meat.	0.0
+1169	c63bf395e5f130b079469f8a6	Two red buses driving in front of a garden.	Train pulling into a station.	0.0
+5282	0aa52ec6438d9ff3ad20176f2	General Electric posts 9% profit drop for third quarter	GE posts 9% profit drop for third quarter	1.0
+998	653b95f1c1c70424a3baebaeb	A man is straining pasta.	A man plays a wooden flute.	0.0
+6047	29609c4b530ec6339064857e4	The black bird is sitting on the ground.	The back of a pig under a tree with a cow in the background.	0.0
+878	a4326352eaad49691197ac506	People are walking in the garden.	One boy is talking with other man.	0.0
+5566	54733e4180cdbe851217cd39f	Russia warns it will respond if interests attacked in Ukraine	Russia warns it will 'respond' if interests in Ukraine attacked	1.0
+602	46ac266e814f03386a6a05994	A woman is grating onion.	A woman grates onions.	1.0
+7885	42f80162b1cff8a9cd9fd8c81	You can do it, too.	Yes, you can do it.	1.0
+4355	96254baf3d68586b39cb325c0	Syria military police chief defects to opposition	Syria military police chief defects to rebels	1.0
+5736	bea16e22f4c392a20ccea830f	Two Palestinians die in attacks on Israelis ahead of Kerry visit	Palestinian official slams Israel's stone-throwing bill	0.0
+4710	2cb445eaca903f04007d93ea0	China stocks end lower Thursday	China stocks close lower on Thursday	1.0
+7227	38012d7ec6f10d1c971acc978	US Supreme Court limits president's recess appointments power	High court checks President's recess appointment power	1.0
+6326	474f26d38c6ec2e02ed7ecce7	There are people out on the street.	People are out on the street.	1.0
+8087	4421101f613a54d7289e46ee8	You have to decide what you want to get out of this.	You're probably going to have to read various blogs to get all the information you want.	0.0
+4934	5c14061ed939cedb39ace63f9	Swiss tourist gang-raped in India	Swiss tourist gang-raped in India	1.0
+261	bd5588488dd9afb5fb00cb0ff	A woman is deveining shrimp.	A man is dancing in rain.	0.0
+1993	b6d04c4d7032369fa4167c227	A boy skateboards down the metal handrail at night.	A brown dog runs on the sand, holding a stick.	0.0
+4009	6c9356dfecf90422ae07acd12	Federer Wins 7th Wimbledon Title	Federer captures 7th Wimbledon title	1.0
+219	c6f8b6b2cd8e00689ea0ecdf7	A man is shooting a gun.	A man is spitting.	0.0
+1944	43bb1ea193fe5335a11473f58	Scuba diver submerged in water.	The scuba diver is underwater.	1.0
+7179	481dcd81f469544b5779fc715	Global progress seen in ending death penalty	Iran diplomat: progress being made in expert-level talks	0.0
+1632	3384828c492e54ec4050ab93b	Two men on the side of a barge	A man is lying the grass with long hair and beard.	0.0
+988	981c0fec85fa46c2fc77b7c63	A man is opening a package containing headphones.	A woman is riding a horse.	0.0
+2047	98cbb41961d8a32e4423eb026	I'm not outraged, I'm disappointed.	God bless I'm not outraged, I'm disappointed.	1.0
+753	fb50affc979f5a61db4ed84f5	A man is playing guitar.	A woman is peeling a tuber.	0.0
+7982	69b6033f8ccd100fcdab4770e	It's all in her head.	It's all about adhesion.	0.0
+3476	ff1a7886ec595eed01380703d	myanmar was formerly known as burma. 	myanmar was formerly called burma.	1.0
+453	403c83eb23c3dc1e77ffccf25	The man is playing the drums.	A man pours cleaner in his sink.	0.0
+130	ca603b0bb1b85edf8782c372b	A man is climbing a rope.	A man climbs up a rope.	1.0
+6176	113ce9480d5319714fc6e907b	A black dog walking beside a pool.	A black dog is walking along the side of a pool.	1.0
+4735	24095788ffe49ae83d23ed070	US releases initial report on fracking impacts on water	Men in China detained after taking girls to hotel	0.0
+5762	ee8f94208c4300b77e16f6308	The man cut down a tree with an axe.	A man chops down a tree with an axe.	1.0
+2254	89a28ab7425df839ea4365297	I think you need to reread what I wrote.	You need to reread what I wrote.	1.0
+5086	799a22f79f76c149dd4eeed35	Cuba's 'Ladies' to pick up EU prize 8 years late	Cuba's 'Ladies' to Pick Up EU Prize 8 Years Later	1.0
+6068	026b1f9bebb0197cc12700f4c	The white ducks are standing on the ground.	A woman in a black hat is standing by the subway.	0.0
+149	ecd8a80ad6e174a23f17e61e9	A man plays the flute.	A man is playing a flute.	1.0
+7349	65aea2ab455ddf3fa4b6bdb3d	A cat is walking around a house.	A woman is peeling potato.	0.0
+755	785235c4a0a518e89ac180b81	A woman is riding a horse.	A man is running on rope.	0.0
+5802	7b065e1552c7810dc41c20779	A woman puts flour on a piece of meat.	A woman is putting flour onto some meat.	1.0
+6751	71d0b85c85dc5eb3cf5d4a926	He later learned that the incident was caused by the Concorde's sonic boom.	He later found out the alarming incident had been caused by Concorde's powerful sonic boom.	1.0
+5144	92db04864fe2cc122e97fb56f	Bradley Manning-WikiLeaks case turns to sentencing	Manning WikiLeaks case turns to sentencing phase	1.0
+8088	126498945ac93ce80647f17d5	I had the same problem as you.	I have exactly the same problem.	1.0
+5867	daf095b5234acf0746f412838	A girl is dancing in a cage.	A onion is being chopped.	0.0
+297	4971a925deb8fd316993f1d68	A woman is cutting a cucumber.	A man is playing a guitar.	0.0
+7913	be25e4ed5055014b3069a4a3b	It's not a good idea.	It is not a good idea.	1.0
+7976	23762217ad6f9cd126927eabc	You answered your own question.	You've answered your own question already.	1.0
+6059	53071d6f0be253a19d2e0829b	A group of peoples posing in fur hats.	A group of cyclists in green and white with spectators looking on.	0.0
+5229	6e7597ceb68a3ebe62b81744b	Chinese premier meets Indian vice president	Hezbollah urges to elect new Lebanese president	0.0
+4360	7de2c4591ac425ad6de0bb254	Swiss tourist 'gang-raped' in India	Swiss tourist gang raped in India, say police	1.0
+6203	5ac6df47870ccf1eaae5d2131	A man in a grey suit kneels in front of a woman in a white dress.	A woman in red with a beer followed by a man in white.	0.0
+4771	4959d4d9155e0704d916682dc	Miss New York wins Miss America crown	Miss New York is crowned Miss America	1.0
+7086	d26e57c4903392334fe6f56be	De Blasio sworn in as New York mayor, succeeding Bloomberg	Bill De Blasio sworn in as New York mayor, succeeding Michael Bloomberg	1.0
+751	39a1ba33bbf798122864eb705	A man is dancing.	A rat is running.	0.0
+8623	ef81b733f17798e3132ded245	Philippines, Canada pledge to further boost relations	Philippines saves 100 after ferry sinks	0.0
+585	c3e7fb090b3ffa67cdc9f8505	Two robots kiss.	Two robots are kissing.	1.0
+1220	551f2fb6c301886d5c288312c	Two dogs in a fenced kennel look ahead.	Two woman pose in a dining room with a baby.	0.0
+973	c53f2f47e93ee943b03db5ef6	The man is using a sledghammer to break the concrete block that is on the other man.	A man breaks a slab of concrete that is lying on a prone man with a sledge hammer.	1.0
+8267	a4c2d3e8887f68d0d644438e0	The Bush administration blames Hussein loyalists and foreign Muslim militants who have entered Iraq to fight U.S. troops for the wave of bombings and guerrilla attacks.	The Bush administration blames the wave of bombings and guerrilla attacks on Saddam loyalists and foreign Muslim militants who have entered Iraq to fight U.S. troops.	1.0
+6707	28dad792b18f2333b4800932c	Red ball under yellow floodlight takes on a brownish color which is very similar to the color of the pitch.	I am too a hobby swimmer but as part of my triathlon training.	0.0
+3573	d1235172015e7aabc187775c0	the matter is delicate. 	the iaea report is restricted.	0.0
+1077	b1cb018e8b5234245be46831b	A black dog stands next to materials at a construction site.	An Asian toddler girl sits next to a pot of flowers on a marble post.	0.0
+3678	3a951e6b01b7ad4cf8c9e7412	it will be hosted by the australian government. 	the u.s. plans have angered the russian government.	0.0
+361	199817add23008948f662d808	A man is doing push-ups.	A woman is cutting some octopus.	0.0
+7456	f0f2bbe24d53a35b7f207123c	A man is playing the drums.	A woman is slicing some leaves.	0.0
+5670	300827f90bbee487787aabd64	Hawaii preps for first hurricane in 22 years	Hawaii bracing as first hurricane in 22 years approaches	1.0
+5726	b6b0c0f99565243fac3d85d6f	Obama calls for international front against IS	Obama vows to save Iraqis stranded on mountain	0.0
+4831	f4c40d4b14d2c57361edf8a18	Women to face higher car insurance premiums	Women drivers to face insurance premium rise	1.0
+7309	4635ad1d82372108ebb4d0aaa	The man is kissing and hugging the woman.	A man is hugging and kissing a woman.	1.0
+5722	dceff08c012dde60341022518	Obama queries Turnbull over China port deal	Spanish bulls gore seven to death	0.0
+943	8e0bdc47dfd6da9bcc6269c3c	The man talked on the telephone.	Girls are walking on the stage.	0.0
+1904	cb21eec233d43264c108fa094	Two girls on the shore watch people in a boat fish.	Two males, one in red and one in white playing a basketball game.	0.0
+5509	255f7e9a5c6efc3649c2a89ee	Italian fugitive arrested in Dominican Republic	Australian icebreaker arrives in East Antarctica for new rescue bid	0.0
+7498	71e796c3ee746c6f09db61d56	A man is reading an email.	A person opening a banana.	0.0
+1961	dcbfcfe64f1668d44596f920a	A man blowing a large bubble.	A man walking a large black horse.	0.0
+5991	a6356c1a4b593a533de4ddbbb	A cat is playing with a watermelon on a floor.	A man is pouring oil into a pan.	0.0
+315	e83d8225475afd878b171f604	A woman is frying something in the pan.	A man is playing his guitar.	0.0
+890	e4fcac362b4d21e64156252cf	A young woman is playing the flute.	A woman is washing off the top of a freezer.	0.0
+849	d8422334f196b7f366ea39d46	A woman is riding an elephant.	A man is lifting himself.	0.0
+894	4e092ee432ad1e336495dc0c7	A person is slicing an onion.	A solenodon is walking along the ground.	0.0
+8117	828916b310140b0faa8a56882	You shouldn't feel any obligation at all.	You don't need sauce at all.	0.0
+5995	6bcc0f2b8c5fb5bd2237d037b	A man is passionately playing a guitar in front of an audience.	A woman is peeling a potato.	0.0
+5424	25d536eb435781b0e5baf6132	Air strikes kills dozens in northern Syria	Ukraine will not give 'an inch' over Crimea	0.0
+3645	07f8dd117723b4e1251524bfe	the iaea report is restricted. 	the killers escaped.	0.0
+7969	6bf3b0d8e3e443a6408f27481	I think it's fine to ask this question.	I think it is okay to ask the question.	1.0
+1205	4f4084a37e8188356c7b6bf3e	An airplane facing the camera.	A lone cow sits in the cold of the yard.	0.0
+5583	61dd132d749745f5045059d72	Iran Nuclear Talks Enter Third Day	Iran nuclear talks enter crucial third day	1.0
+7923	c0b828ef53623e01926cb2ca3	I've had this same problem.	I had this same problem.	1.0
+3230	8ffbd1fca91fe166a8fdf9df7	Wells’ other series include NBC’s ER and Third Watch.	"Wells' other series include NBC's ""ER"" and ""Third Watch."""	1.0
+6337	e36cfc385041db812a1e1d12b	People are near water	People are near water.	1.0
+514	627f1bbca7d59306286f0fba0	A man is playing a keyboard.	A man plays a keyboard.	1.0
+8401	16e2b6dc280f6af2b06819085	Gu Kailai murder trial ends in China	Gu Kailai's Murder Trial Ends in China	1.0
+1185	3d1c445415c9db8bee94c29c0	Two brown horses standing in grassy field.	Two men sailing in a small sailboat.	0.0
+1263	9cdf1a139fc44613d467ee271	A black table with white fuzzy chair.	A woman with her child.	0.0
+333	4cc2641583bc93b76ef69e889	A person is riding a horse.	A woman is slicing potatoes.	0.0
+6848	688905880a4a85f76e1c8991a	EU ministers were invited to the conference but canceled because the union is closing talks on agricultural reform, said Gerry Kiely, a EU agriculture representative in Washington.	Gerry Kiely, a EU agriculture representative in Washington, said EU ministers were invited but canceled because the union is closing talks on agricultural reform.	1.0
+5662	78c355bc96e59e9ae406161cd	US Attorney General Holder resigns	Attorney General Eric Holder to Resign	1.0
+1317	11f0258f4c4ad15ee4c6ef0be	Two women in the kitchen looking at a object.	Three men in suits sitting at a table.	0.0
+5284	76fbff944bca5c0a0b453e976	Russia finds dead lawyer Magnitsky guilty in posthumous trial	Russia convicts dead lawyer Magnitsky in posthumous trial	1.0
+435	73aed9f13ae812573927f9e6d	A woman is mincing some garlic.	A person is cleaning a disk.	0.0
+4521	d55c141b92d1e3c96eff89ee5	Macau Gambling Revenue Hits Record $38 bn in 2012	Macau gambling revenue hits record US$38b in 2012	1.0
+8110	7b051b7866a3fce8dca631372	This is not a good idea.	Not a good idea.	1.0
+7321	87ae62a2670704549abb623bb	A woman opens a window.	A man is crawling.	0.0
+8054	57df3be140995c9a70e7c1d35	What are your goals?	What are you goals?	1.0
+4798	a09a449c23c4d199af94812ac	Kerry: $4b Palestinian Economic Plan Could Work	Kerry: No deal yet in nuclear talks with Iran	0.0
+4075	e607cf26e0f7929adb3f7cffa	String of Iraq blasts kills at least 32	Strong Italy Quake Kills at Least Six	0.0
+1389	9e8e5bb494815e6438b187142	the back of a stop sign with many stickers on it.	The back of the stop sign is adorned with stickers.	1.0
+5515	7d17f4b41a6ba9c9b4aadc374	5 Things to Know About the Sochi Olympics	7 Things to Know About Ethanol	0.0
+2613	aba0b1fc595751be3922e735d	The operating revenues were $1.45 billion, an increase over last year's result of $1.38 billion.	Operating revenues rose to $1.45 billion from $1.38 billion last year.	1.0
+5080	05e7a29d525c88f4a210f97d0	Iran dissidents 'killed in Iraq'	France loses influence in Europe	0.0
+5607	de9d19a198c0cdd583777fcf2	German ambassador's Athens residence shot at	Shots fired at German ambassador's residence in Athens	1.0
+6505	928f73e15465f4106b5c1ed01	"""What I am really looking for is an estimation of the Muslim population..."" @ThanosK and @T.E.D., an overall, general population estimation f.e."	The following is taken from my dog-eared copy of the New Penguin Atlas of Medieval History.	0.0
+8060	c2d478782bf476a290137acc3	It is more deciding what you should do and what you should get others to do.	Point is: know what you want and don't be afraid to ask for it.	0.0
+501	d23974b881cf1f5c6f9e78171	A woman is cutting an onion.	A woman is cutting through an onion.	1.0
+6506	38c5393c389f18f18bec67745	In Hinduism and Buddhism there is message of peace and an encouragement to not be materialistic.	"This relates to the ""discovery"" of Asian, and other non-European cultures by Americans."	0.0
+7701	aea8186a9b27d85d7a91e59f4	Many football players sitting on the ground.	A dog rolls on the ground.	0.0
+1693	80eb19729ece6154b66826f95	Two people are racing a sidecar motorcycle in the mud.	The dog carrying a long stick in its mouth.	0.0
+6746	3a5c30f5c72124bfb96f7320e	Keep in mind that you can easily swear without swearing.	I think Stephen King's comments are helpful in this regard.	0.0
+7694	1725e03c1dcce17960c77c34e	A brown and white dog is running across a brown field.	A person hanging from a rocky cliff.	0.0
+8102	654435fc9e2efdb8f2b991519	So think it in this way.	Think of it this way.	1.0
+5500	0a97594ca0e2feef3e6ff278e	Ukraine leader pledges crisis talks	Ukraine Leader Pledges Crisis Talks	1.0
+577	8c0a26f81ee57f5f83eae7f0f	A car is parking.	A cat is playing.	0.0
+5315	0d1b88bacbf4a418069191bd5	Mumbai Indians puts T&T in its place	Indonesians vote for president in tight race	0.0
+8024	531321c3f381c7c7788433e4d	There are a few things you can do: 	There are a couple things you can try.	1.0
+909	b0132fdbad591544d9f144e09	A man is slam dunking a ball.	A woman is slicing some onions.	0.0
+7941	2d65a9452bade5b94d6428d51	You answered your own question.	You have answered your own question.	1.0
+627	8aaba1da53a6b9ac9a2f356b4	A man is playing a piano.	A woman is peeling a potato.	0.0
+1991	c187f2426458b7ccc922655f3	A group of people in boats racing towards the shore.	A classroom of students watching a presentation.	0.0
+4298	cb0f1444360775dd43ff25995	Japan PM dissolves lower house for election	Iran and world powers set for nuclear talks	0.0
+6156	eba7dcf0746893efaed36d70e	Two little girls in pink are dancing.	Two ladies jogging on a path near the waterfront.	0.0
+7310	d62c22e91b3b659888e705c09	A train is moving.	A man is doing yoga.	0.0
+8288	ac9131496493bced4d58c68fd	In that case, the court held that Cincinnati had violated the First Amendment in banning only the advertising pamphlets in the interest of aesthetics.	In that case, the court held that the city of Cincinnati had violated the First Amendment in banning, in the interest of aesthetics, only the advertising pamphlets.	1.0
+365	cc4d1c776efec048f278a64de	A woman is peeling a potato.	A lion is walking around.	0.0
+6608	b22c5cafe3aa1092d82abb3ff	The question of time is an incredibly difficult one, which has been treated of philosophers from Aristotle to Heidegger.	wikipedia, as much as it is a supposedly self correcting medium, is not necessarily a definitive account of anything.	0.0
+6186	9a743660889162887ebede1b7	A black dog lays in the sand.	Kids play in the water	0.0
+7155	30730df2200c57587afcb819e	Matt Smith quits BBC‚Äôs Doctor Who	Matt Smith quits BBC's Doctor Who	1.0
+1192	08ba9c4d2c8ed5d151ad9f1b4	The black and white cows pause in front of the gate.	The white airplane is flying in the sky.	0.0
+3778	044ccf40bde302a0a15f66286	Romney announces Paul Ryan as running mate	Romney names Ryan as running mate	1.0
+8599	b1bd895e2651561ce51f4755b	Russian opposition leader under house arrest	Russian Opposition Leader Placed Under House Arrest	1.0
+362	d22543c5b068c5003696c2c88	A man is playing guitar.	A woman is slicing up some pork.	0.0
+1683	ec1a0c34537e1066c98efa96f	Five men in tuxedos are walking down steps.	Five men in tuxedos walk down a set of steps	1.0
+1663	222e68437c1cd5738cae7c85a	A young boy in a white dress shirt is playing on a grassy plain.	A woman is getting her hair done at a salon.	0.0
+5735	6803fa2014febe12425f83640	Taiwan's president charters plane to pay respects to Lee	Poland president loses to challenger	0.0
+5745	e64b6baccbaca0f24b9c69c3f	Dozens of Egyptians hostages taken by Libyan terrorists as revenge for airstrikes	Egyptian boat crash death toll rises as more bodies found in Nile	0.0
+928	3e5abed52f3dc7baac2a112be	A monkey is walking through the water.	A guy is playing a trumpet.	0.0
+5110	8e552775fff7d57e1edffd6e7	Egypt's opposition criticizes president's speech	Pakistan's opposition party boycotts presidential elections	0.0
+352	bd001d074bcc0ed6e705d7fe1	A woman peels an apple.	A man pops wheelies on a motorcycle.	0.0
+5540	4fa6f6987f1f71a0db1053135	UN Invites Iran to Syrian Peace Conference	UN: Iran Invited to Attend Syrian Peace Conference	1.0
+6115	ff9bfbb5e5744550a96d1c138	A man sitting on a bench looking at a dog on a leash sitting on sidewalk.	A women holds a small baby while sitting on a sofa.	0.0
+1269	8e3f5af9429046fb255c8717e	A young boy coloring with a red and blue crayon.	A young blonde girl in riding gear sits on top of a gray and white horse.	0.0
+7825	d5d2075cca2288daa732f4077	people getting their dirty clothes cleaned	People are getting their clothes cleaned.	1.0
+7711	0e7660eba891c22b96384e247	A young pitcher is throwing the baseball.	A brown dog is walking on the grass beside a fence.	0.0
+1147	6373f0cf33755c055483ac53c	A passenger train coming into a station.	A large bird is flying through the air.	0.0
+2053	848cf09226547dc86ca069ef5	It depends how you define extreme.	"Depends on how you define ""extreme""."	1.0
+5587	9cdc31332cf3eae98cfec0adf	Over 100 dead as typhoon slams central Philippines	At least 100 dead as typhoon batters Philippines	1.0
+6273	0e435b9365b8342855d83dc2b	A blonde woman looks for medical supplies for work in a suitcase.	The blond woman is searching for medical supplies in a suitcase.	1.0
+2754	60beeec0f2086531898358ce4	The island nation reported 65 new cases on May 22, a one day record, and 55 new cases on May 23, making Taiwan's epidemic the fastest-growing in the world.	Taiwan reported 65 new cases on May 22, a one-day record, and 55 new cases on May 23, making its epidemic the world's fastest-growing.	1.0
+5577	a2d3d37a04dcddb518e3e8b44	North Korea Warns Foreigners in South, Advising Evacuation	North Korea warns foreigners in South to evacuate	1.0
+6738	dce67372dea74e478759b07e4	No, you don't need to have taken classes or earned a degree in your area.	I have done quite a bit of technical writing for healthcare information systems.	0.0
+2532	5709fab6dd9b8476ec7c45907	But software license revenues, a measure financial analysts watch closely, decreased 21 percent to $107.6 million.	License sales, a key measure of demand, fell 21 percent to $107.6 million.	1.0
+5309	b8056014c04d86d8129856985	Washington Pot Shops Prepare for Historic Sales	Washington pot shops prepare for historic sales	1.0
+5595	f1971b428dabc7a91635b1912	Hamas Urges Hizbullah to Pull Fighters Out of Syria	Hamas calls on Hezbollah to pull forces out of Syria	1.0
+1987	8385cf9bc63002867ba8fbf15	A black dog is running through some water.	A man in a football uniform is running with a football during a game.	0.0
+516	7bdfe5d2ae706d46d78253211	A woman is peeling a potato.	A woman peels a potato.	1.0
+7144	d17faa78519dd893ccd70ada1	Kenya Supreme Court upholds election result	Kenya SC upholds election result	1.0
+3912	295460116f97a3a20d7d641b3	Romney picks Ryan as vice presidential running mate: source	Romney to tap Ryan as vice presidential running mate	1.0
+8007	4b7922aed52b31dc3bf0df775	You just have to base your answer on what you do know, which is what you want.	Remember this is your degree we are talking about, its up to you what you want to do.	0.0
+7876	1dc2484fd26f9c2b5e87f03af	There's also what the string is made of.	There is also a Youtube-Version of the film.	0.0
+5632	2ba7f473c3da802394243de35	Mandela spends third day in hospital	Mandela in Hospital for 3rd Day	1.0
+1304	decf0611701dbde3123ad3a19	The woman is sitting on the red motorcycle.	The white sheep is standing on the green hill.	0.0
+5186	dee0b498d0cea2ff9122361be	Rock bands' plane makes emergency landing in Ill.	Rock Bands' Plane Makes Emergency Landing in Ill.	1.0
+2011	7cf3fe72f353dc283fde2fa1a	There's no chance of a fair trial.	there is no chance at a fair trial.	1.0
+1531	546b33f8f2c6f1235f8578a45	A girl playing is a pile of colorful balls.	A little girl plays in a pit of colorful balls.	1.0
+6389	8f68718fa8b3a142a397a2a5b	This does not fully answer your question, but it is certainly one consideration.	I am a PhD student in Computational Science, which is an interdisciplinary major spanning mathematics, computer science, and engineerning.	0.0
+6209	608e628c11604635dd91d904e	There is a black dog jumping into a swimming pool.	A black dog is leaping into a swimming pool.	1.0
+4353	3bc0a3d5ae337cd46ba74201d	Death toll rises in Russia plane crash	Death toll rises to 39 in Italy coach crash	0.0
+3241	b3b2d2e5b71b8b0cd96869174	Bush plans to meet with Israeli Prime Minister Ariel Sharon and the new Palestinian prime minister, Mahmoud Abbas, in the Jordanian port of Aqaba on Wednesday.	On Wednesday next week, Mr Bush will meet Israeli Prime Minister Ariel Sharon and new Palestinian leader Mahmoud Abbas in Aqaba, Jordan.	1.0
+8601	9054d0160913b0af8b3cf90e9	Israel confirms strike on Syria targeted weapons	Israel officials: Strike on Syria targeted weapons	1.0
+6040	e053499a3d0247bd52549fce2	The small dog protects its owner.	The back of the stop sign is adorned with stickers.	0.0
+8618	7e415be2f69f5eb1d53b89973	Funeral of Ian Paisley to take place in Belfast	Funeral of MH17 victim Liam Sweeney takes place in Newcastle	0.0
+1532	7a99419bfabf96820b08ba163	An older man is standing outside in front of a truck.	A woman dressed in green is roller skating outside at an event.	0.0
+5651	92b458ba916ec4b24c40a9724	Who Is Jihadi John?	Who was 'Jihadi John?'	1.0
+7367	d05eaf3b3738b1fcc37aa6a61	A woman is slicing ginger.	A person is holding two baby lorises.	0.0
+8019	e256c76d83622ed66249e70e0	The answer to both questions is: Yes.	To directly answer the two questions in your title.	0.0
+5117	a1aba25eb6a56c139b98df5a1	Investigators probe motives of LAX airport shooter	Investigators Probe Motives of Los Angeles Airport Shooter	1.0
+1552	845ac0dcfd0768486125ffd79	A girl swings her long, wet hair in a lake.	A person riding a dirt bike.	0.0
+1724	3eab84d02196ed99217edbc82	A woman is attempting to ride a small wave.	A man and woman sitting back to back outside in the sun.	0.0
+6601	420ab6d4d7d1a7aa29287d44e	I have no idea why it is voted up, but Rex Kerr's answer begs the question.	It's a tautology, but the mapping between logic and the English-language description is wrong.	0.0
+323	3257660470b6632db6149ecf0	A cat is watching a TV.	A man is slicing a leave.	0.0
+5744	f82e2e1e21420a6267e5e60d8	Severe Gales As Storm Clodagh Hits Britain	Merkel pledges NATO solidarity with Latvia	0.0
+8114	1550370432f8686bc2d31d556	You don't have to worry.	You don't have to do anything to season it.	0.0
+5780	ec0d6ac04301526ed3eb74515	A band is performing on a stage.	A band is playing onstage.	1.0
+334	499784428f891e11709f3fc7d	A woman is slicing octopus.	A man is playing the guitar.	0.0
+7815	4335ab9084ad63bf2fdc7dd9c	People gathered in a room.	People gathered together in a room.	1.0
+7596	2433a11f8f33f5d8a24124679	A yellow school bus parked in a field.	A brown horse in a green field.	0.0
+1556	88e7cdadf0adf19844e263595	A guy and two girls are smiling at the camera.	Three dogs, one white and two brown, are running together on a field of grass.	0.0
+5870	0db8737d84bb51c48fca6c0fc	A cow is eating grass.	A dog is pulling a girl down a hill.	0.0
+423	94cd0e37303268e4d78a19d91	A woman slices a lemon.	A man is talking into a microphone.	0.0
+1258	18bcea2259477c7b41eb94789	The black dog is lying in the grass.	A black dog lies on the grass.	1.0
+8575	b9dfe3ee6ad411cf219b9d5e8	Prominent AIDS researchers killed in Malaysian plane crash	Top AIDS Researcher Killed in Malaysia Plane Crash	1.0
+1481	d788a365fee8c670111133460	Two dogs in a fenced kennel look ahead.	Two girls on a guy posing on the bow a boat.	0.0
+1994	93303dfa885a492019b937a49	A person is squeezing through an opening in the rock face.	A medium sized brown dog is running through an open white wooded area.	0.0
+5786	c89d561eaa6819d7bc0a98221	A man plays the piano.	A man is playing a piano.	1.0
+7363	8e8e75989fb911211be6d1863	A cat is playing on the floor.	A man is slicing garlic.	0.0
+4019	3c5896607098d953828635d85	Nine killed in gun attack in Pakistan	Five million citizens get unofficial salary in Ukraine	0.0
+7373	2016b12423767bfbe7da6f582	A baby elephant is eating a small tree.	A little girl peddling a scooter.	0.0
+4958	1704f64aadbcb14c89e1711c8	Feds move to require car-to-car safety communication	Guatemala overturns former dictator's genocide conviction	0.0
+7225	748d8fef565c14fdfda868c46	Yemen: Fighting in north kills over 120	Janet Yellen: Five things you might not know	0.0
+1822	65b2c75c4a0ba1fbdc0309aaf	A dog running through snow.	A dog runs in the snow.	1.0
+316	9f3b944cf32868ebfb0bbc9e1	A man puts seasoning in a bowl of water.	The man added seasoning to water in a bowl.	1.0
+284	39e97705bbb5389f85a16e7f1	The woman is peeling shrimp.	The man is holding a lemur.	0.0
+1712	86713ffcdb9273244922ec671	Man rowing a boat.	a man doing a trick on skateboard	0.0
+7590	8b8fafeb5bddaca8beabbc355	A green car parked at a saloon.	A green car parked outside the saloon.	1.0
+493	6179d293ef77cda73ee7477cf	A woman is slicing big pepper.	A dog is moving its mouth.	0.0
+5527	b417b91adcd02640efbd1f502	Egypt Launches Offensive Against Sinai Militants	Egypt launches offensive against Sinai insurgents	1.0
+1689	d11ec8c0fcbbd5e818b91d2ed	The large brown dog is jumping through the tall grass.	The girl wearing a blue shirt is running through a science center.	0.0
+1273	587310bfad775bf5ba3203165	A girl with a red bag standing on the street.	A black dog is staring at a sheep.	0.0
+3425	1b3a3e675370e936f452a0f02	At least 11 more cases in Indiana and three in Illinois are suspected.	There’s also at least three suspected cases in Illinois and 11 in Indiana.	1.0
+7675	072dd5e2530b7149dccbc95e2	A boy in red jumping into a sandbox.	A dog swimming in a pond	0.0
+6930	eef048e2cdf8de07530d75370	"Gainer said the two staff aides are ""very sorry this all happened,"" and the security personnel had performed ""well within standards."""	The security personnel performed ``well within standards'' and the two staff aides were ``very sorry all this happened,'' Gainer said.	1.0
+7486	42a2196d975b7b8c1c9ed246b	A man is smoking.	A baby is sucking on a pacifier.	0.0
+958	a952cc815f1f16ce103c13f8e	The man is playing the guitar.	The cat cleaned his face with his paw.	0.0
+8560	7820dc9d1059ce3d24f37741a	Guatemalan court finds former dictator guilty of genocide	Guatemala's former leader found guilty of genocide	1.0
+8611	954340d7b5be40518fcba77ef	Tycoon claims win in Ukraine and promises to seek future in EU	Polling stations open at Ukrainian presidential election	0.0
+7106	2ab2227fadb0a8aee3d788c29	Security tightens for Thatcher funeral	Security agencies worry about new terrorist threats in Kenya	0.0
+829	938a30567ddfe5f10cbaadd59	A girl is eating a cupcake.	A man is playing a trumpet.	0.0
+1073	2a996c61d97b6f824426f5697	A living room with a dining table in the background.	A boy doing a wheelie on a plank with the beach in the background.	0.0
+3067	5874631c5db2a900eeeaf889f	The Federal Trade Commission (FTC) asked Congress today for additional authority to fight unwanted Internet spam, which now accounts for up to half of all e-mail traffic.	The Federal Trade Commission asked Congress yesterday for broader powers to attack the rapidly growing problem of spam, which new studies show accounts for half of all e-mail traffic.	1.0
+1306	fbf3c3f55dad549a69b342aae	A close-up of a black train engine.	Close up of a white sheep with a black head.	0.0
+5555	21585f570afc6929ceeb61227	U.N. rights chief presses Egypt on Mursi detention	UN Rights Chief Presses Egypt on Morsi Detention	1.0
+1414	7aacfd2a10d782fbcb4ae8fe6	Two men standing on beach.	Two women standing in front of tour bus.	0.0
+3947	be2f7c57870a4e14daaafb24b	Head of CIA resigns over affair	Hall of Fame beckons for Capriati	0.0
+1840	97ca1b05b8a248146d6351b75	Two kids splashing in the water.	Two dogs play together on the bed.	0.0
+8463	8d0265653ddf99cd4c4e20923	Queen Beatrix of The Netherlands to abdicate for son	Queen Beatrix of the Netherlands abdicates in favour of son	1.0
+460	780039bd9ab74859d1d9ab07e	A man is riding a bike.	A panda bear is eating.	0.0
+8539	b060a3ede38bfb958b32bef16	CIA chief visits Israel for Syria talks	CIA chief in Israel to discuss situation in Syria	1.0
+5000	e3205c5acf3a2f0f5947d45ac	Turkish search ends as last missing miners found	Turkish Search Ends as Last Missing Miners Found	1.0
+4371	19e5ff7aa6ee8499667e02ed7	North Korea Postpones Family Reunions with South	North Korea 'postpones' family unions with South Korea	1.0
+6064	a79d3c9c3efecea4c196a1233	A man doing a wheelie on a mountain bike.	A woman posing by a pillar with a U2 sign.	0.0
+8103	c54c561e0386d6a0d48cd6093	Maybe this could work for you.	Maybe this can work for you.	1.0
+4879	1b2c66a1ae92d8568268aa73a	Residents return to Texas blast site	Residents return to Fallujah	0.0
+7920	22ec6a8242f672c03e99f49dc	This is not a good idea.	But it is not a good idea.	1.0
+5241	98e003dbeb4b25dae5aaf8b57	Sony Xperia Z2 and Nokia‚Äôs X series unveiled	Court orders political ban on Italy‚Äôs Berlusconi	0.0
+6492	c97822eba76adef53c037fbf9	I found it difficult to mark just one answer as correct because all are.	"I reccomend ""Monkey Grass"" because it is like a slow growing weed that reproduces slowly and looks nice!"	0.0
+8085	67467b9815c49ccd18f300fb7	It's not a good idea.	Not a good idea.	1.0
+1353	79db0ea101b87d8a66faa3042	Man playing guitar while sitting down.	Red and white bus driving down road.	0.0
+1492	325599b78fe48c68e603a08f0	A train is at a train station.	a train in a station.	1.0
+1554	6c01a336562ba24f90fa16d94	A little girl walks on a boardwalk with blue domes in the background.	A man going over a jump on his bike with a river in the background	0.0
+911	2313969ffab11f05543a42b59	A woman is brushing her feet.	The sun is rising behind trees.	0.0
+6108	9e61df81709c4437a15233440	Depressed woman sitting on couch.	Older woman holding newborn baby.	0.0
+5724	7af95aa3f97d89f2355fee670	Hezbollah targets Qaeda gathering along border with Syria	Belarus tightens security along the border with Ukraine	0.0
+1034	4a4c05f6b56c49c20bafb5b9b	A close-up, distorted photo of an empty glass Coke bottle.	A close-up picture of a desk with a computer and papers on it.	0.0
+5746	c8e15ed47d51b14ed3a9b8947	President heading to Bahrain	President Xi: China to continue help to fight Ebola	0.0
+1777	8066b351ae856f046792e49f7	A girl in a pink shirt is sprawling her limbs out in midair.	A man dressed in a Santa suit is climbing up a large concrete building.	0.0
+6407	722284a36543d2f5edffc3ae8	A black hole (briefly), is nothing more than a dead star whose mass was more than 3 solar masses.	"I think you mean to ask, ""What is the local sidereal time of Greenwhich?""."	0.0
+903	eff2bada313e06118cce2d476	A man is cutting grass.	A clown is singing.	0.0
+4733	1740ab0cf2e4638c2d9cfbda0	Driver in Spanish train crash faces questions from judge	Train driver in Spain crash questioned by judge	1.0
+5307	0741d9c6a8f699355c1852122	Red panda‚Äôs short-lived zoo escape	India‚Äôs march to Mars	0.0
+1652	000c0a871b1d85e7b5c06208d	A black dog is walking on the grass with a stick in it's mouth.	A boy holds a net with a snake in it close to the ground.	0.0
+8032	0395c0da34b45a39a149b481d	You answered your own question.	You pretty much answered your own question.	1.0
+5476	561eecd9918e9d2cbbdb4db32	Two French journalists killed in Mali	France confirms two French journalists killed in Mali	1.0
+7248	7e904563d5982ca67e72381a8	New video shows US police officers beating mentally-ill man	New York police officer critically wounded in hatchet attack	0.0
+6416	a2bdae271dffcf4c519dbb148	As mentioned in the other comments, ANOVA is problematic when mixing types of predictor variables.	I like to think of multitasking as rapid task switching.	0.0
+8127	7f4532aa988b07bb9960e4ae2	This is a terrible idea.	This is a bad idea.	1.0
+1514	a236c1456d8410c53338b6081	The two boys play in the field.	The two people have their heads covered with scarves.	0.0
+7336	a617cab77ac976e3dfca65234	A man is doing trick with play cards.	A man is performing a card trick.	1.0
+6522	4e85059e272a23de237557d72	A caveat: I'm experiencing the tail end of a three day migraine.	I agree with the commentators that your question is a little confusing.	0.0
+5831	23eb30ee32300dbd2b879ab6a	A man is playing a flute.	A dog is barking at a fly.	0.0
+1966	4ebeb4a8637f89a1ff0ad9b82	The girl is wearing a blue striped shirt and Rollerblades.	a man wearing a black and white shirt jumping on a dogs back	0.0
+1857	61fb17a01112cff820987f641	Four kids holding hands jump into a swimming pool.	Four dogs playing in the snow.	0.0
+7076	6e42592149f1a86777240d889	Spurs get revenge on Lakers, lead West	Abduct Israelis to free prisoners, Gaza leaders say	0.0
+337	56f71b81c5a9ec0f981eed02e	A girl is eating a cupcake.	A man is slicing a cucumber.	0.0
+5411	2443d20bc892af15876cadd06	Poverty stats doubt Modi's development claims	GM to start taking recall compensation claims Aug 1	0.0
+445	b238138ae10c9de17f3ab6ed0	The man drove his little red car around the traffic.	The dog ran in the water at the beach.	0.0
+6089	1d2e85e804f93f957af67e1ef	A small yellow boat sitting on a tropical beach.	A small girl sits on a stone ledge near a white flowering plant.	0.0
+6000	47974adffb40617a1ad7a87ab	The lamb is looking at the camera.	A small bird standing on a log at the waters edge.	0.0
+2197	1af1580774f42b250fdf658b4	What do we get in return for doing the fighting for them?	------ ----------- What do we get in return for doing the fighting for them?	1.0
+5562	7677f83122260ef852c19bcc2	Six dead in Philippine restaurant blast	6 killed in Philippines restaurant blast	1.0
+1929	4db784181e0a080325b13a228	Children play fight with swords.	A child and parent pet a horse.	0.0
+5365	6573fc03fa691f10aaa1a4a57	Strong new quake hits shattered Pak region	Powerful new earthquake hits shattered Pakistan region	1.0
+6670	83441c5db68d2a2fe9f85311d	Some studies suggest open-space environments lower working efficiency with 2-10% due to interruptions, stress and noise.	There's an iPhone app called Groups which might be helpful.	0.0
+7461	12d6c864b887151cca1e06fa5	The man is mixing whipping cream.	The man is holding a skunk.	0.0
+6657	88c058d1ddf3b28308d9ef566	Even though the question has been answered I would like to add my answer .	I don't know if I should say this, but if your job is making you anxious.	0.0
+6455	d0f4e9f1df7e3d2a2efcce6ab	I'm American, and I've never heard the bathroom referred to as St. John's.	In situations like these, I tend to lengthen out the phrase.	0.0
+1868	24fe9f8eff8b031ee486aa267	A man stands astride a bike on a rocky trail by a lake.	A woman is wearing a white headband, purple tank top and black gloves.	0.0
+5503	96c8426008483aa99db8e55d3	US believes Syrian government used chemical weapons	US suspects Syria used chemical weapons	1.0
+7650	3b5d5b3bba86b05f7912ff32b	A woman in a black and orange jacket throws a stick for a brown and black dog to fetch.	The man in a blue jacket is standing in a crowd.	0.0
+885	27d30f5c35331bf8882664c03	A man is speaking on a phone.	A panda bear is chewing on a stick.	0.0
+426	76cf17a0799b828b4ae462cfd	A man sharpens a pencil using a knife.	A woman is dancing in the rain.	0.0
+716	ae894ce04560e81dcdb423a5b	A man is firing a shot gun.	A man shoots a shotgun.	1.0
+3571	30d04c94d1af361839418a981	the cfe is very important for european security. 	the cfe is a cornerstone of european security.	1.0
+5436	6db0eb96a0158e65eaa3359b5	D.C. Votes to Decriminalize Marijuana	DC votes to decriminalize pot	1.0
+6025	9aa07db7a4e5b5c2dfdf3d1b1	World news headlines displayed on a large screen.	A man dressed for a race relaxes.	0.0
+5796	cdd12209ddbd44a58b4ffeea6	The man is riding a horse.	A woman is using a hoe.	0.0
+5853	dd9e8731261ce4503c86c7e55	A woman is chopping onion.	A man is doing a card trick.	0.0
+5654	d0cd929a072da0b9f46461910	U.S., EU Widen Sanctions On Russia	U.S., EU Boost Sanctions On Russia	1.0
+7382	105d7aa0aa352a0a7af78a2ed	A woman is stabbing a potato with a fork.	A woman is puncturing a potato with a fork.	1.0
+7355	c3fb96a4622ba46baac8eaea6	A man is playing guitar.	A boy is talking to a giant dog.	0.0
+4620	136a1550d334726c40e520b3d	Soccer-France to host Australia for first time in October	NRA official to face questions for first time since controversial remarks	0.0
+3602	391c5439ab771c92e4674073e	the statement did not specify the quantity of warheads the missile is capable of carrying. 	the statement did not specify how many warheads the missile can carry.	1.0
+5847	56ae2a5d6ed0f28aee297b8bf	A cat is pouncing on a trampoline.	A man is slicing a tomato.	0.0
+6652	559d125aff67515f6051e34e4	The important thing I try to remember is just to pay attention.	I have been reading on this topic since I have asked this question.	0.0
+858	b39fe45247aae08c6523798eb	A woman is seasoning a piece of meat.	A man is loading a rifle with bullets.	0.0
+5733	3b0a4f15029d63925243d362f	N. Korea agrees to talks with South	Johor crowns its fifth Sultan	0.0
+5023	4ffa34f70bfd74b4595173b72	Nelson Mandela dies aged 95	Nelson Mandela Dies at Age 95	1.0
+1051	816ea99e0c4dcb71452c01623	Black and white photo of couch with purse at one end.	a black and white photo of a cow under a tree.	0.0
+5649	aa601ade7da60028539fb315c	Pope calls for action on climate change in draft encyclical	Pope urges action on climate change in draft encyclical	1.0
+535	dee532f115d1e611f6f1695be	The man is playing the guitar.	A man is playing guitar.	1.0
+5259	725378512ea887fee0653ee06	India starts voting in world's largest election	India voters kick off world‚Äôs biggest election	1.0
+7681	8145555a35728f5e7b945803b	Two people are in bed.	Two boxers are in the ring.	0.0
+4405	1f88305818c56e89ce245a92b	&gt;Cuba's Castro assumes CELAC presidency	Cuba's Castro to Take Over CELAC Presidency	1.0
+456	33e83e9bc6ad73136baf59328	A boy is crawling into a dog house.	A cat is playing on the floor.	0.0
+8005	f453d0a2970ffd92828542686	There's not a lot you can do about that.	I really do not think there is much you can do about that.	1.0
+5711	5c52bf47f5ebd47863bb00015	Oscar Pistorius sentenced to 5 years in prison	'Bookkeeper of Auschwitz' Sentenced to Four Years in Prison	0.0
+6109	5a26a9ad0c89956857f7fb561	An elderly woman catches a ride on the back of the bicycle.	The boats are on the water located in front of the mountain.	0.0
+5427	e16102e583a3967f4e15bb6a1	Two arrests made after protest against Nigel Farage	Kerry vows progress after latest intensive Mideast trip	0.0
+8047	97d5320dbffa133fd819c3880	No, you do not NEED a bread machine.	You do not need to worry.	0.0
+5004	ab454788eabc6d18e3dc3e8e0	Ankeet Chavan granted conditional bail for marriage	Ankeet Chavan granted bail to get married	1.0
+1020	64868cc86ef2b78050c7ae19e	A person in a blue shirt reclines near a coffee table and television.	A person stands on the motorcycle seat and pops a wheelie.	0.0
+439	ae83c293c722a0efa193ec9f8	A man lays on the ground and aims a rifle.	A man is spreading butter on a tortilla.	0.0
+6713	7857b6d33fc8fd2f7ebd62ba9	It was random that she faced Li Na in the first round - not because she's seeded/ranked #127.	This was too long for a comment, so I am posting it as a CW-answer.	0.0
+763	4134be234b8a2d92bc2bb974d	The man danced in the diner.	The bomb exploded in the desert.	0.0
+5017	35611e0db7bb95f4d4070de59	Greek far-right leader imprisoned pending trial	Greek Far-Right Leader Imprisoned Pending Trial	1.0
+1557	173dbd16e1cf8362c497508b3	A dog swimming with a stick in it's mouth.	Dog swimming in the water with a stick in its mouth.	1.0
+5358	908180f75274aa390722222a9	Los Angeles airport worker charged with making 9/11 threats	Los Angeles airport worker charged over 9/11 threats	1.0
+3797	39dde1ae3e4168a059a90e833	Gunman kills 6 in shooting at Wisconsin Sikh temple	Gunman kills six in shooting at Sikh temple in Wisconsin	1.0
+5881	537c408dfae460e5732df1641	A woman is cutting broccoli.	A woman is slicing broccoli.	1.0
+1138	e9eedec0eda34b3143ec0c32d	A women sitting in a chair at Christmas holding make up.	A train sitting on the tracks in a train yard.	0.0
+2427	ae54f416111c949fc983c94e1	If God does not exist can anything be morally wrong?	I ask again if God does not exist can anything be morally wrong?	1.0
+7930	32a4bdec09e3e3c5b854d9b26	You just have to base your answer on what you do know, which is what you want.	It is his job to see that you have what you need to do your job.	0.0
+3852	0c239aa3513f9f8cde089b48a	Gusmao consolidates power in East Timor elections	Supreme Court possibilities if Romney wins election	0.0
+3981	667694e46f1fc8bc2442cfcf9	American Airlines and Pilots Agree on a New Contract	Romney pledges to 'stand with Israel' on Iran threat	0.0
+1252	c848e371a6f0bde71456b8775	The bird is sitting on the branch.	The sheep is standing under the trees.	0.0
+4623	5db9243a9e3356ff584ffdfdc	Moderate tremor in the Central Mediterranean	Iran: Moderate candidate wins presidential vote	0.0
+4378	8967d8bc6316e1b0b38a70a5e	Man Who Set Himself on Fire on National Mall Dies of Injuries	Man 'who set himself ablaze' on National Mall dies	1.0
+6706	36d0f26fcb4c843f71ce7fabd	Actually, it's much more easier to count the one NOT on the same continent.	That is also the recommended strategy for marathons, if you are going for time.	0.0
+5846	e552c5e857abfeeff0b769667	A woman is putting her baby in a waste bin.	The woman is poking holes in the potato.	0.0
+5890	bb4435df5292c5582bb142d61	A man dives into a pool.	A man dives into a swimming pool.	1.0
+8086	488fbe969a028b47df9e17cf6	You don't need any visa.	You don't have to worry.	0.0
+8573	d1aada715d2d9fdfc21645270	On War Criminals and Heroes: The Whitewashing of Ariel Sharon ŔÄ	On war criminals and heroes: The whitewashing of Ariel Sharon	1.0
+2817	7dac9a2e6b53bab96d7639f53	No Americans were reported among the casualties, according to Capt. Michael Calvert, a spokesman for the regiment.	None of the casualties was Americans, said Capt. Michael Calvert, regiment spokesman.	1.0
+1779	7c4075f9600336f0133db6cf6	Child sliding in the snow.	Man sleeping on the street.	0.0
+5301	78ae046cd2626fed7d504c36a	Google Unveils Prototype Self-Driving Car	Google Unveils Concept Self-Driving Car	1.0
+7543	361478e474e4e1527ec0c8b87	The train heads down the tracks and along the hedge.	a dog on the floor of a patio looks at a cat on the fence.	0.0
+8400	2b29cfae63cad7a8dbcbe86bd	Samsung overtakes Nokia in phones	Charges over dog attack on police	0.0
+8026	fa7a26e34beb5a867ac5801f9	You don't have to know.	You don't have equipments/facilities to do research in B.	0.0
+1775	cbcaf3c3a2893f811e7f37e21	Two people wearing hats sit and look at the camera.	A man wearing a blue shirt makes a grouchy face.	0.0
+8078	b2a2ee6ceffa1ddd076beac64	I'm thinking it's a bad idea. 	I think it's a bad idea.	1.0
+2765	96eade31bc92cb5442c62f961	South Africa has the world's highest caseload with 4.7 million people infected with HIV or AIDS.	With 4.7 million people infected with HIV or AIDS, South Africa has the world's highest AIDS caseload.	1.0
+2511	712dc94bb3364ecca264604bf	The value will total about $124 million, including convertible securities, according to Corel.	Including convertible securities, the total estimated value of the deal is $124 million, according to Corel.	1.0
+929	3906d51c80319155d75b00ab8	A woman is putting on makeup.	A band is singing.	0.0
+5213	18044374f522b792d8ea1a7a9	Egypt votes on new constitution	Egyptians Voting on New Constitution	1.0
+7944	f12d1018c0a1726dca04e4a51	The best thing you can do is to know your stuff.	My recommendation is not to say anything, and do the best you can.	0.0
+4892	5e6a16a917c13bbcecaf2b39e	Voting canceled in three provinces in tense Thai election	Cambodian opposition rejects Hun Sen election win	0.0
+1706	0999d6ffbd12fcba087ace75d	A climber is standing on the rock face next to the pink rope.	The children are running in the snow with fences in the background.	0.0
+218	fa3b2057b2dacdfa1692a7795	A person plays a keyboard.	Someone is playing a keyboard.	1.0
+4633	bfa7ecc94714c762923baa2e4	Dozens killed in air strike on bakery in central Syria	'Dozens killed' in Syrian air strike on bakery	1.0
+491	ed079da0182859f3325973a73	A person is slicing an onion.	A cat is pooping into a toilet.	0.0
+7946	05cb5425a3236716e0968ef7e	You don't have to know.	You don't have to do anything to season it.	0.0
+197	972fa6b2255fbbfad3c1645e1	A woman slices tofu.	A woman is cutting tofu.	1.0
+1830	6e5c8b2a6ee138dbefa9f7952	Two dogs run through the snow, one with a tennis ball.	The boy is doing a stunt, through the air, on his bicycle.	0.0
+1565	d29f35c1cc298ffff6622c1f9	A white and black dog is jumping into a pool.	A woman in a black apron is standing in front of a mirror.	0.0
+1981	1f829782dea36fa209facfaa4	Two dogs are peeing at a red fire hydrant.	Two dogs are urinating on the red fire hydrant.	1.0
+8529	446036cff900521c611cd88a3	Storm buries Northeast; 16 inches of snow in NJ	Forum urges stable relations for China, Japan	0.0
+5300	b2bb3650215367dc9e7e9b20c	Cleveland Kidnapper Ariel Castro Found Hanged in Prison Cell	Cleveland kidnapper Ariel Castro found hanging in his cell	1.0
+6582	5cb9e64bbec4aaf58225fec45	The appropriate pH level of the water does vary a bit by fish, but too acidic can definitely kill them.	The info you've been given in the previous answers is good.	0.0
+6841	a0379b3f4d0cd9fc04b8470f2	BioReliance's stock closed down 2 cents yesterday at $47.98 per share.	Shares of BioReliance sold at $47.98 at the close of market yesterday, down 2 cents.	1.0
+3599	6355f79c1720b1cb1d2f4c188	hong kong universities collaborate with universities, businesses and government sectors of mainland china to coordinate training programs and research centers to promote high-tech research, commercialization, and technology transfer. 	hong kong universities have collaborated with tertiary education, business and government sectors of mainland china to direct training programs and research centers to promote research commercialization and technology transfer.	1.0
+5822	cc8c225a35542a9b9491a46e5	A man is talking with other women on the beach.	A man is walking down the street.	0.0
+7614	31110738a3806d6af07085db3	A cruise ship is in front of a docking area.	Calico cat sitting on step in front of a door.	0.0
+2462	6923d9cf81395c1c19b5a54b1	AAA spokesman Jerry Cheske said prices may have affected some plans, but cheap hotel deals mitigated the effect.	AAA spokesman Jerry Cheske said prices might have affected some plans, but cheap hotel deals made up for it.	1.0
+5863	61429bdaf1e1d394bddf36bfb	The elephants are bathing.	Two women are singing.	0.0
+5246	cd25e870e57080e2d625cb4de	Royal Hoax DJ Takes Action Against Station	Taliban bombs US base in Afghanistan	0.0
+5340	813b04916e7b759c37ec13dc6	Egyptian military spokesman denounces incitement against army	Labor ministry announcement due on Monday	0.0
+6413	6eecd1b008a3cb2c1d4a3babc	I've found an additional concept that may be related to the original question: prototype theory.	According to current models of human concept learning, the answer to your question is both.	0.0
+7626	870d664d0bdcb95f62fc63580	A small camouflaged airplane parked in the grass.	A small dog wearing a pink shirt tied to a railing.	0.0
+1697	f566883f2c6e5f7469a28091e	A person is skijoring with a dog in the mountains.	A brown dog is playing with a ball in the water.	0.0
+1797	7c29a6243ddab763b0a52d3ec	The black dog is running through the snow.	A race car driver is driving his car through the mud.	0.0
+6643	0b850c81f7669fa3abf5c3557	This question has already been widely discussed and answered on Skeptics.	Minimum wage laws hurt the least skilled, least productive the most.	0.0
+5556	7e6521f69fc6ff51d082a0cd8	US Senate confirms Janet Yellen as US Federal Reserve chief	Senate confirms Janet Yellen as next Federal Reserve Chair	1.0
+8503	7058f0fdb7484df20e08a6540	Kardashian Divorce Ready for Trial	Hard-hit hotels ready for price war	0.0
+1159	ca179411ad48cdac79b8d1c1c	Red double decker bus.	A red, double-decker bus.	1.0
+4597	8bfa730206b6d943f1e4ded7e	Zen Report: Ain't easy being high maintenance	Russian meteorite leaves building gaping open	0.0
+5546	acf4a36430b508e39ecd5ad11	World sends emergency relief to battered Philippines	Typhoon Haiyan: world sends relief to battered Philippines	1.0
+5563	80910564aca2848659cbbe559	China army newspaper hits out at US's PRISM programme	China army newspaper slams US's PRISM program	1.0
+7388	33234d8443ef37f9e0dbb7ac5	A group of people are sweeping water out of a house.	People are sweeping water out of a house.	1.0
+7974	06a0163f85158f97572f33680	What kind of insulation is it?	What kind of floors are above?	0.0
+3306	8b0b23e6970ab49792c7eb637	He explained that he found Antetonitrus when he came to Wits in 2001 as a post-doctoral research assistant at England's University of Bristol.	He explained that he found antetonitrus when he came to Wits in 2001 while a post-doctoral research assistant at Bristol University in Britain.	1.0
+1378	279d78e3445e22ac2cbe6bf34	A girl in a black desktop holds up an open box of Corn Flakes and a carton of milk.	A girl wearing black shorts and boots is standing next to a blue motorcycle.	0.0
+432	1a4ce4e8c2bd9bc0651ebc6f8	A dog is running on the ground.	A girl is tapping her finger nails.	0.0
+5610	f0e720129f93899dfb980a71e	Napolitano elected for second term as Italy president	Italian President Napolitano elected for second term	1.0
+7409	e17c90c5f54a6884526e1a41d	A man plays a trumpet.	A man is playing the trumpet.	1.0
+502	1d9c7f21a248a2cc4782f74f6	A toy train is striking a toy car.	A toy train strikes a toy car.	1.0
+6625	230a70ade44411f7579963295	The short answer is that yes, you can do this.	Speaking from my own experience, I would rather carry different ND filters that combine two polarisers.	0.0
+5243	c4cb46167639d7cd44c341605	Mandela back in hospital in ‚Äėserious but stable‚Äô condition	Nelson Mandela returns to hospital in ‚Äėserious but stable‚Äô condition	1.0
+1695	a61b78ae5b6f3864c1c7208d3	A man standing on a boat is pulling another boat close by with a bamboo stick.	a man in a black hat standing in front of a brick wall and a sign	0.0
+5969	27993d905df0680cafd3cc043	The person is starting a fire.	A person makes fire.	1.0
+869	8d8d0da4a081065923cec7439	A monkey is walking on a bed.	A man is riding a horse.	0.0
+5592	a4b4e5c7201c966aaa6da9ba1	What makes India vote? Jaipur Lit Fest debates	What makes India vote? Debate at Jaipur Literature Festival	1.0
+7407	710d5cc4dd282aebbfb322e92	A man is playing a musical keyboard.	A man is playing a keyboard piano.	1.0
+6215	2a22d9d70f05d56d0b1141ba8	A group of seven people are rafting in the rapids in a green boat.	A group of people are standing and sitting around on the ground at night.	0.0
+6655	39d9cc48b8a64e4ff4250cc34	Here's a technique  I've developed without being aware of it: Multiple Browsers.	I agree with others that tracking your time is fundamental to the solution.	0.0
+813	e8b0b69aa9606f7fc658ecfa5	The two dogs were in the pen.	The cowboy rode his horse in the desert.	0.0
+8124	fd7779a70a356ebf653cc09f8	I agree with the other comments.	I agree with the previous comments.	1.0
+3659	6ca54fe5f03a23764021b8aed	vietnam has among the world's strictest drug laws. 	vietnam's drug laws are among the world's strictest laws.	1.0
+8034	f4abc5478e27ed953e61c1724	Yes, there is a chemical difference.	Yes, there is a reason for it.	0.0
+7968	e9aa4d79ef51c931a1739923c	It makes absolutely NO difference.	No, it makes no difference.	1.0
+8031	2a3781b7fc3f7e2deea158f3d	You got it right.	You've got it right.	1.0
+8064	fbf1c10d4fc3ea2ca2e525b8a	You are on the right path.	You're right on about the sample definition.	0.0
+972	f6630016ecfa05b50b5527b0b	Someoen is cooking onions.	A man is swinging nunchucks.	0.0
+3586	782f5e89808864ac7c2427d2d	saferworld team leader on transfer controls and small arms roy isbister stated-- the eu embargo prohibits direct or indirect supply of military equipment for use in myanmar. 	saferworld team leader on transfer controls and small arms roy isbister stated that -- the eu embargo explicitly states that no military equipment should be supplied either directly or indirectly for use in myanmar.	1.0
+44	506ba4f095fccf5af41f068ef	A person cuts an onion.	A person is cutting an onion.	1.0
+8072	a17e08c650fc5c63560136ff0	I had the same problem as you.	I have just had the same problem.	1.0
+5074	f82bc0071fb3394d451ea1ddc	Palestinian diplomat dies in Prague blast	Palestinian diplomat killed in explosion in Prague	1.0
+1585	e932e258e1830e4f9aab7406f	Two dogs play in the grass.	Two dogs are playing in the grass.	1.0
+5197	2a07fb49b975a3c0a829be9b3	Anthony Weiner slips to fourth place in new poll	Weiner falls to fourth in new NYC mayoral poll	1.0
+7199	700da70f351057288e75ab5e7	Poll: Cory Booker takes early lead for N.J. Senate	Nigella Lawson 'took cocaine every day for a decade'	0.0
+1513	34f1aacd7311721cd43553152	A brown dog laying on a blue cover.	A person is diving into clear blue water.	0.0
+2114	faa2acc7b4ea18eec924e7462	Originally Posted by anabelle What's wrong with that?	Originally Posted by Vienna To 'say' what?	0.0
+1859	78915d0a114d76213b3831360	Two soccer players battle for the ball during an intense match.	Two little orange and white dogs are in the snow.	0.0
+6405	5cffdd6403eccf3553b881b2d	The farther away, the faster the galaxies move away from us.	Here is my answer to a similar question posted on the physics stack exchange website.	0.0
+308	03db6f9faca25a4e38b3c09db	A person is cutting a meat.	A person riding a mechanical bull	0.0
+877	d52da444031af8819e4846905	The person is removing the scales from the fish.	A person is descaling a fish.	1.0
+5554	6ebf31876cbf91944af639531	Senate confirms Obama nominee to key appeals court	Senate approves Obama nominee to key appeals court	1.0
+5737	08810f9d95cce3b849b043357	Thomas Cook accused of putting costs before customers	University of Florida frat accused of spitting on wounded war veterans	0.0
+1541	ce14b3e78d88c5f09818eaa0a	A tent and a campsite in a sunlit forest.	A white dog on a beach is carrying a stick in its mouth.	0.0
+3494	0f50ebc0988681be33b116837	helmand province is the world's largest opium-producing region. 	helmand province is the world's largest producer of opium.	1.0
+1289	444222fc3bba2b6bc77c920fd	A buddha statue holding a candle is sitting on a table.	A man fishing on a small boat while on a lake.	0.0
+5271	dc959f62b0509d6c9d0fe4aef	Updated - Two explosions near finish line of Boston Marathon	Two explosions at Boston Marathon finish line	1.0
+6548	8db72a6f949542751c248ad27	Oh friend, I have been down this miserable road just like you.	Yes, it is accepted practice to wash new Semi-Static rope (or Single Rope Technique/SRT Rope as it is known by cavers).	0.0
+5435	bff4df1f275939969edaaaf53	China ‚Äėwill protect interests‚Äô of foreign business	Obama in ‚Äėdirect‚Äô confrontation with Putin on Ukraine	0.0
+7200	3100486ea69e56af1f83aaffb	Blast on Indian train kills one	State: No funds for yeshiva that incites violence	0.0
+5728	b5247fe453e82862b4aaa8885	Who abandoned 3 Boeing planes at the airport?	Police abandon posts in Lesotho, fear for lives	0.0
+237	2a0e0b2a1184a103c50441c82	A cat is licking a sucker.	A woman is slicing cucumber.	0.0
+5868	221c5a6afd04d44d3c8cf346d	A cat is on a robot.	A man is eating bread.	0.0
+3662	b1830b12fdeb9dc86298edc0c	russia ratified the amended version of the treaty. 	russia ratified the amended treaty.	1.0
+5118	9fc980d297811cc7ea0c0975c	Outrage after reports emerge about 6-year-old Indian girl raped at school	Outrage After Indian Girl, 6, Raped at Her School	1.0
+5550	0401a251d1d609f35ae10166a	Food price hikes raise concerns in Iran	American Chris Horner wins Tour of Spain	0.0
+2965	0aa6f0dacf15d9033151e3bad	When the bomb exploded at the Casa de España, customers were eating dinner and playing bingo.	At the Casa de Espaa, customers were eating dinner and playing bingo when a bomb went off.	1.0
+919	93ecdcb47af9f89f588c20265	A man is catching a ball.	A cat is rubbing against a baby.	0.0
+4447	15cf52590cc3f1033b485b0a1	2 dead, 2 injured in Nevada middle school shooting	Nevada: 2 dead, 2 hurt in middle school shooting	1.0
+5437	ffb39d99a077bae35480454ac	Many dead as asylum boat sinks off Australia	Mandela spends third day in hospital	0.0
+5569	db48715856ad625154e72b22b	Couple marry in the UK's first Scientology wedding	Couple get married in Britain's first Scientology wedding	1.0
+395	0e6b52b0c156f0451bbf68c9a	A dog is jumping on a trampoline.	A boy is playing a guitar.	0.0
+5520	5a6c94a8bead2ab92dae17a33	Venezuela expels three U.S. diplomats	Venezuela Expels 3 U.S. Diplomats	1.0
+1608	c41ce862db3ad73d4c861cf4f	A dog shaking off water.	A dog shaking water off.	1.0
+5830	36c119f3f74c7f3395262cd22	A man playing the guitar.	A woman is painting her lips.	0.0
+3844	52552c3d41b5dee17719baa8b	Capello quits as England manager	Capello resigns as England manager	1.0
+141	c5a94eaf5be58c76d42b4c7c3	A woman is dancing.	A man is talking.	0.0
+5740	1a1d9cc6c1ca9af28f73f7800	Pakistan executions draw international ire	Pakistan protests ceasefire violations by India	0.0
+4836	e09f2925565d51ad50e6ad2b6	China's new PM rejects US hacking claims	China Premier Li rejects 'groundless' US hacking accusations	1.0
+818	aa47d774c0c5fafbccc3d3ff3	A man is eating.	A woman is rock climbing.	0.0
+1226	347748f29438332db7e9875f3	Two guys sit on a couch holding beers with a girl lying on their laps.	Two women watching the street with their bikes to see when they may cross.	0.0
+7683	14c550337708792c293a3c126	A red haired women in black is posing for a man while resting on a tree.	A man in a black shirt is holding a child wearing sunglasses.	0.0
+7961	7762f652c2b154202e5897b95	The best thing you can do is to know your stuff.	The best thing to do is to overcome the fussiness.	0.0
+3907	cbf67a78c25b7e6acceec0e69	Clinton calls for friends of Syria to unite	Plastic artist calls for greater support for new talents	0.0
+58	fe6602f4e8d2a6a5b3e67a4c2	A woman rides a horse.	A woman is riding a horse.	1.0
+7137	7a8c2cb073fee5c64c82a9648	Turkish police mass near Istanbul park protest area	British police deny protecting sex abuser Savile	0.0
+816	fe91679629fe287b35d1e39f0	A man is opening a box using a knife.	A man is playing a guitar.	0.0
+5605	39527e0617a427b4d71bcf544	Spain approves new restrictive abortion law	Spanish government approves tight restrictions on abortion	1.0
+5580	6b1907f7f86cf4a1f1e4a8612	Death toll in Syria now tops 100,000	Death toll in Syria over 100,000 so far	1.0
+940	1c4b2243371bf966d822cecb1	A woman is dancing by a fire.	A man ties a noose.	0.0
+5978	1a20f325b1772e90b1f1d7634	A woman is slicing big pepper.	A man is playing an instrument.	0.0
+6298	2674ca956576f48e9df921a61	The puppy is outdoor.	A man in printed board shorts is doing a yoga pose on the beach.	0.0
+5945	ecd3812b3eb63d549cea9a818	A woman is cooking meat.	A man is speaking.	0.0
+200	e1c6a421418c7ebddc7345809	Someone is feeding a animal.	Someone is playing a piano.	0.0
+7660	225341eb09bba972974c2e324	Two boys playing a game of flag football.	Two boys are playing flag football.	1.0
+1450	e140f211ad63a80ffea4261d5	A young boy laying on a sofa with a dog.	A small boy laying on a sofa with a dog.	1.0
+6318	0e163dcfd2b37d2bdbe155a85	They are preparing for a performance at school.	Two medical professionals in green look on at something.	0.0
+4038	918aa832517138bb3bdd7073d	Scientists Resurrect Flowers from Prehistoric Seeds	Nintendo trims red ink, lowers forecast for year	0.0
+7911	39058533e3f33f96c0713df86	There are two ways to start with: plunging and dripping.	There are two traditional ways to bend wood:	0.0
+6653	67f05eb6f40a5bad2ad83f8c7	I think you need to apply a little statistical thinking to this.	One general key to not feeling dejected is to avoid comparing yourself to others.	0.0
+404	2906800eefdecb9de1fc73f6a	A man is jumping rope outside.	A woman is slicing a cucumber.	0.0
+353	8d11306065d851f961527e6de	A man is taking some math classes.	A man is rinsing a steak.	0.0
+7180	4ad7f84e9bf1ce7bf83932aa8	Greek police arrest German on suspicion of spying	Israel press bemoans price of talks resumption	0.0
+8613	0753bfd1bc6759577ecad8893	AbbVie Sours on $55B Shire Deal After Tax Changes	AbbVie cools on $55bn Shire deal after US tax changes	1.0
+6917	155912a6c4be6897745f46544	"""We hope all parties will continue to make efforts and continue the process of dialogue,"" the Chinese Foreign Ministry said in a statement."	"China's foreign ministry said: ""We hope all parties will continue to make efforts and continue the process of dialogue."""	1.0
+3551	8a0a308487161c3cdc2025c99	the iranian government stated-- the iranian nuclear program remains peaceful. 	the iranian government says the nuclear program is peaceful.	1.0
+1602	ada25364b1a70b7f3bb06a571	A blond haired lady in white poses for the camera.	A black and white dog runs with its mouth open.	0.0
+394	e532edc2ffa2a1017822da385	A man is playing a guitar.	Someone is handling a bun.	0.0
+8568	3e496d597efa67309e2cab8fa	5 nations meet on haze	Putin's marriage at an end	0.0
+5244	8a3a7529fd0eec59040cfed26	East Harlem explosion death toll rises	Mexico storm death toll continues to rise	0.0
+7240	78681aeba97d6ba2629a6db4d	Oil falls in Asian trade	Oil prices down in Asian trade	1.0
+3861	5defc00aabafb988508b90223	Erdogan and Putin talked in raised voice	Foreign militants killed in Somalia in strike on car	0.0
+875	c38a8f41db3b1d75c0b08bf14	A man is playing a violin.	The baby is laughing and crawling.	0.0
+375	b5e6c55e22240756c113c8786	The animal is eating.	A woman is dancing.	0.0
+483	f09486bcfc980d4a32e2a5b63	A cat is licking himself.	A man is slicing a white onion with a mandolin slicer.	0.0
+293	4a4737f421a3c4ee61ff05231	A woman is water skiing on a lake.	A man is playing a flute.	0.0
+926	54500cd726bc01dc0138510a6	A boy is playing piano and singing.	A pig is agitating a lion.	0.0
+7491	1c66598040bc6b6ae78801214	A man is doing exercise.	A baby is laughing.	0.0
+39	2385d295fb8735fba804b2eea	A woman peels shrimp.	A woman is peeling shrimp.	1.0
+4304	2732abcb4ea6c401e5314909b	Two die in Syria violence after UN monitors land	Two year doping ban for Contador	0.0
+8112	7286b379f51ab025fc638fcd1	Yes, there is a reason to not do what you propose.	Yes, there is a chemical difference.	0.0
+6037	bce75b3c2c325f49c3e82c502	A scantily clad woman is standing next to a car.	A yellow and orange bird hold on to the side of a cage.	0.0
+5557	8aa6e661ce094b176f024dd71	Syrian Rebel Groups Battle Each Other in North	Syrian rebel groups battle each other in north	1.0
+1184	d29d4ffaaaff97156486fe1bf	A flat screen TV on the floor.	A flat-screen TV sits on the floor.	1.0
+7922	9525752b5db4be112ff5449d9	I was in a similar situation.	I had a similar situation.	1.0
+1967	95217db8447810339a925d914	A tattooed man in black playing a white guitar and singing.	A woman in a black and white coat and earmuffs.	0.0
+1084	06fb30ad050f6aa7e9c089dce	A man sitting on the grass looking toward the sky.	The train is riding on the tracks in the snow.	0.0
+831	2e68299412f3050a6a790f108	A man is buttering bread.	A woman is ridint a horse.	0.0
+7231	e25e759618f4368a43ad740e3	Chinese lunar rover lands on moon	China lands robot rover on moon	1.0
+1272	5117bf5148d83361056bba3b9	The cat is sitting between two bicycles in front of a door.	Than horse standing in a field in front of a fence.	0.0
+5027	3aba218e4f9cbaf286fb4cbbb	Kevin Rudd sworn in as Australian prime minister	Rudd sworn in as Australia's new Prime Minister	1.0
+6414	0f20a4b9618472f597dbb3e78	There are individuals who possess extraordinary memory ability, sometimes called eidetic memory.	There are many arguments for why this is not the case.	0.0
+8606	fc50de3dad745975251f2dfd2	Mt Gox reveals 200,000 'forgotten' bitcoin haul	Mt Gox finds 200,000 'forgotten' bitcoins	1.0
+641	ae37ca88b4c319b1eb14bf9d4	The man is peeling an apple.	A man peels an apple.	1.0
+5975	c93b92fa5b6e3ed81fb02214f	A woman is mixing eggs in the bowl.	A man is doing push ups.	0.0
+6996	1ea7a5265c6cbb8a2c5996c10	But skeptics are concerned about the ease with which vendors can use these hardware-based security features to set digital rights management policies.	But skeptics are concerned about the ease at which these hardware-based security features could be used to set digital rights management policies by vendors.	1.0
+7921	9c7e8992b26389e5af8dbdfa1	The answers so far are already good, but I'd like to add a map for Switzerland:	You have a lot of answers already, but I'd like to add Curries as another solutions.	0.0
+714	ba681022abb2fcc1018d1fd4f	A man is being put into an abulance.	A man is pouring pasta onto a plate.	0.0
+866	b0ac53cf30ee77d59bd15b9c4	A man  is driving a car.	A woman dips a shrimp in batter.	0.0
+1334	d74a847f6e4963966ec09308c	A close-up of a brown horse's head.	A close-up of a yellow school bus.	0.0
+1371	2498fb46ffbad28f810135545	A gray cat with green eyes looks at the camera.	A grey cat with green eyes looking into the camera.	1.0
+1735	9f0d3ca5272b12811b6144e59	A yellow shirted man wearing a golden sun mask.	A man in a yellow shirt wears a gold, sun-shaped mask.	1.0
+246	e2b53e861e42ffda7ccfdba90	A man puts some cheese on a pizza.	The man sprinkled cheese on the pizza.	1.0
+7107	fe643460cae55f5c68560986d	Google invests $200 million in Texas wind farm	Google invests 200 million USD in Texas wind farm project	1.0
+19	ca0ea7c291a7a9bc20bd59aa6	The man is riding a horse.	A man is riding on a horse.	1.0
+7518	f9a2578810cf724cc93fe8442	Two green and white trains sitting on the tracks.	Two green and white trains are sitting on the train track.	1.0
+6233	52d7690e194f949c5765bcfc9	A Golden Retriever jumping off a wood porch.	A golden retriever is jumping off a wooden porch	1.0
+5565	f117a86035727ad078cd9e8fa	Two killed in Bahrain car explosion	Two killed in Bahrain car blast	1.0
+354	cec7f9f30ead8c0e9878999f3	Animals are playing in water.	Two men are playing ping pong.	0.0
+7508	7fe7d52231aefe20272f684ab	The flock of sheep are spread out in the field.	A white cat stands on the floor.	0.0
+8119	d994f47dd62c69e377c0b021a	You may have to experiment and find what you like.	You have to find out what works for you.	1.0
+1143	66f18f78c1ce0a7b963525a4c	A plane flying at a distance.	A woman with a white horse.	0.0
+666	fd6fcd2f85091d9fb9b864523	The lady put the baby int a trashcan.	A woman puts a baby in a trash can.	1.0
+863	1ab18971cf67b5bc616e52aa3	A man rides a horse.	A woman rubs a baby's leg.	0.0
+8028	941ba41018baae3be4107071a	There are a few things I think you should do.	There are a few things I don't understand:	0.0
+2500	71d7596be17042a78a7d7694f	After protesters rushed the stage and twice cut power to the microphone, Hedges drew the speech to an early close.	After protesters rushed the stage and twice cut power to the microphone, Hedges cut his speech short.	1.0
+5849	4c8249d53c40a4e189d2a0cf6	A woman is riding on a horse.	A man is turning over tables in anger.	0.0
+4752	16768f8954fba7b974c26e235	Three feared dead after helicopter crashes into pub	Three feared dead after helicopter pub crash	1.0
+4282	90245f82bbf725db453570282	IDF to deploy Iron Dome in Central Israel	Major snowstorm barrels down on Central Plains	0.0
+7385	b0e17322daec4c2e58f7b577c	A woman plays the flute.	A woman is playing the flute.	1.0
+934	aa679c6511a1c6ab3afdb3835	A man is traveling in a boat.	A woman is cutting up a carrot with a knife.	0.0
+7524	c8ee58ad3d1328b81a9125d3a	A man in a top hat rides a white horse.	A man with a top hat riding a white horse.	1.0
+7901	8ffe4cd11a5e695acfce8f838	It's not a good idea.	It's a good question.	0.0
+6564	a769176f09684405bfee5a0f4	I'm facing a similar situation; being Danish and living in (German-speaking) Austria.	An alternative would be to expose her solely or additionally to Hindi in daycare.	0.0
+5808	6db77b2827f23c1e9ea9cc5bc	A young man is playing the piano.	A woman is peeling a prawn.	0.0
+7447	e59ed84b4a4444b4ea1283675	A woman is braiding her hair.	A man is riding a motorcycle.	0.0
+4142	2637051e1bceb93583b1556cc	9,000 U.S. Marines to leave Okinawa	9,000 U.S. Marines to move out of Okinawa: statement	1.0
+996	92ed7c2a905ea28c8993aec3d	The men are playing soccer.	A man is riding a motorcycle.	0.0
+1219	915bc0a0928a437ba76f5ebb3	A group of people having a drink.	A row of locomotives on a siding in a field.	0.0
+3985	1e7530b70d1d72793bf7461fc	Bradley triumphs at Firestone as Furyk fades	Bahrain court upholds sentences against uprising leaders	0.0
+7374	e45bd53898211d9e6b423e7a7	A woman and man are dancing in the rain.	A man and woman are dancing in rain.	1.0
+7989	0f53bee5e53a66ecb7cec6d1a	How do you do that?	How to do that?	1.0
+4853	8a1e31907fa32343ee42cd1ee	Myanmar’s Suu Kyi urges party unity amid squabbles	Suu Kyi urges party unity amid squabbles	1.0
+7702	061460c29fadd41bc9d19369b	A little boy and a little girl playing together outside.	A woman wearing a white shirt stands on the street.	0.0
+1614	a638fbb16d7f7d11740c1d01b	A black dog with a blue collar is running in the snow.	A black dog wearing a blue collar is running through the snow.	1.0
+6654	0bfbc18d41feddc7b4becc265	A quick research (1, 2) showed me that the concentration of caffeine seems to peak about 30-60mins after ingestion.	The issue is that it never becomes useful in its true meaning.	0.0
+438	1eb4a8300c30d70490b8b1c45	Two Sumo ringers are fighting each other.	A man rides a water toy in the water.	0.0
+1027	f79cfcd637f2d105581792c09	An elderly woman stands in a kitchen with two cats at her feet.	The old lady is standing in the kitchen with two cats at her feet.	1.0
+4376	caafdf1279917928ba0977c96	Generations divided over gay marriage	G20 Summit ends divided over Syria	0.0
+5981	d70e897d316fe184e2c184caa	A tiger club is playing with a ball.	A person is chopping shrimp with a knife.	0.0
+8067	2d3a093278cb1a9ed3756036d	It's also a matter of taste.	It's mostly a matter of taste.	1.0
+5748	5e0d508d82be6272f5f616861	Putin spokesman: Doping charges appear unfounded	The Latest on Severe Weather: 1 Dead in Texas After Tornado	0.0
+7247	cf06f2f426062a5a41486020b	Obama is right: Africa deserves better leadership	Obama waiting for midterm to name attorney general	0.0
+5319	6d6cc820a6f6db7ac4bcd4494	Palestinian President Receives Jordanian Foreign Minister	Palestinian arrested for sexually harassing young girls	0.0
+7655	33ffb7952f40b263c64fab215	Two racing dogs run in the mud.	The man is going into the water.	0.0
+541	1f95a4bfbbf65e5996886211f	The man is playing the drums.	A man is playing drums.	1.0
+1224	4bd625bb6ca47cdfc59137896	A train sitting on the tracks near a field.	A baby is sitting in the grass.	0.0
+992	895dd1e71e947f87a1f24eabc	A female applies something to he hair with her hands.	A cat is eating a slice of watermelon.	0.0
+4807	0631a3ccd59cc45d53d8db395	South African icon Nelson Mandela hospitalized	South Africa's Nelson Mandela Hospitalized	1.0
+1420	6c4a7dc4073be5db6356e409b	A black and white image of a cat laying on a rug.	Black and white picture of a cat laying on a rug.	1.0
+1934	7e63e80e4696c7aabe9011829	Woman in red overalls standing on the sidewalk.	A woman in red overalls stands on sidewalk.	1.0
+5766	48915fdfaf4990ba82dd4fdc2	A man is climbing a rope.	A man climbs a rope.	1.0
+994	62b2440e464621afc08c389d8	The man is playing the wooden flute.	A little boy is vacuuming the floor.	0.0
+1115	c29b6424bf35f54a1490e316b	A girl in a red shirt is riding a brown horse.	A tan and white dog laying in bed with a yellow coverlet.	0.0
+1708	836789ca4e20203bd4d39297a	Two dogs are playing around in the dirt.	A dancer posing for the camera in a red and white dress.	0.0
+5521	732e0a5399a03d265ca850d8b	Heavy smog hits north China city, flights cancelled	Heavy Smog Hits North China City, Flights Canceled	1.0
+4287	da2eca01c0b29a958a96311e4	20-member parliamentary, trade team leaves for India	Commerce secretary to take leave of absence	0.0
+1745	251174d781a1f8f4aca0446e3	A black dog retrieves in the snow.	A skateboarder jumping in the street.	0.0
+5295	9d0aad109103168fa0bdf6c52	Israel downs drone from Lebanon	Israel shoots down drone from Lebanon	1.0
+757	999c9583cf6f2b613a2ac446d	A woman is peeling an orange.	A man is playing a flute.	0.0
+4884	a7749bf701df75f8e8ee72e77	Sniper waiting for result of appeal	New glories for China in striving for renewal	0.0
+6659	fed35e55323f0f7b98e1b86ca	To stick with the traditional pomodoro technique this is considered an interruption.	There is actually functionality in most browsers already in place to do just this.	0.0
+6497	9f4424dffbe3747f903045b44	I bought a book, which talks about this, so here's an answer to my own question.	Well I wouldn't risk it, not in a cold compost system.	0.0
+7205	33ba49a90d11ee0a438b44623	All eyes on new Pak army chief Raheel Sharif	Flood alerts in France as river levels rise	0.0
+3922	33b538afaf3307989785a42a1	Remains of 167 bodies found in Mexican cave	Remains of 167 people found in Mexico cave	1.0
+1899	e5731100df95df498d716f7c5	Two dogs playing in snow.	Two dogs play in the snow.	1.0
+6057	6fd818cda6053d89662382344	A backpack standing beside a train.	A social gathering of people in a restaurant.	0.0
+5104	a141fe363adc9cbed020dceee	Moon rocks indicate earth's orb born of collision	Indian minister killed in head-on collision	0.0
+5747	ac49563b910299b83296e5fcb	China, India vow to further bilateral ties	China Scrambles to Reassure Jittery Stock Traders	0.0
+8022	6414ea4d131f809d27f470917	Can you do this?	So, CAN you do this?	1.0
+24	59caa606b050c4625509baa15	A woman peels a potato.	A woman is peeling a potato.	1.0
+1886	30e053e995a068ef8540b2f4d	Two men sit on the sidewalk in front of stores.	A woman in a bathing suit walks a dog on the beach.	0.0
+16	26d8b472c8c5853087315c642	The polar bear is sliding on the snow.	A polar bear is sliding across the snow.	1.0
+8010	d349a40e1f35e95bd63bdd326	What is your lid made of?	What is your paper for?	0.0
+4961	43f46c10aa77f2d7ae74aa680	Iran warns against military intervention in Iraq	Explosion near Damascus military airport	0.0
+7434	443d919564768c142b49c3b51	A man is playing a piano.	A guy is peeling a potato.	0.0
+3993	5fa024029eb94e06fd3f2d0aa	US pledge to rebuild Haiti not being met	US Pledge to Rebuild Haiti Not Being Met	1.0
+2844	e333a9e1d8883b5879896eabf	The national denomination of the Episcopal Church, with 2.3 million members, is the U.S. branch of the 77 million-member Anglican Communion.	The Episcopal Church, with 2.3 million members, is the American branch of the worldwide Anglican Communion, which has 77 million adherents.	1.0
+6700	c45811ea3c4fd014b49c3c717	Reading your post, made me think of my younger years !!	I'd say you need to distract yourself from the bigger picture.	0.0
+6676	1ffda58f51118306892f3e65f	I was invited in to pitch story ideas to Ron Moore at ST:TNG.	It's obviously possible for it to leave the field without harm - it occurred.	0.0
+5833	2f806839a0925fdb2e58def5e	The man used a sword to slice a plastic bottle.	A man sliced a plastic bottle with a sword.	1.0
+6477	b4a2920ee0a8aa23ec9fbd294	First of all, as a general matter of fact you suppose to change your workout routine in every 3-4 weeks.	You can mix those, but in my experience, it will be very difficult at first.	0.0
+7364	d7671d78e527ff0b331021ee5	A boy is playing violin on stage.	A person is mixing a pot.	0.0
+7964	42538417e94bff4fef7d7f324	You PROBABLY don't have any chance at the moment.	"Saying ""thanks, I don't have any questions at the moment."""	0.0
+8097	f845d2f3eefcb6f72080fc289	It is impossible to answer this question without a form check.	This is a part answer to your question	0.0
+2502	f003a617ed43ddb539d8c4a50	Doctors say one or both boys may die, and that some brain damage is possible if they survive.	Doctors said that one or both of the boys may die and that if they survive, some brain damage is possible.	1.0
+4715	0c70a92f9f385477f11d32297	Goa first step in Modis march to Delhi	For first time in history, Technion to teach engineering in Russia	0.0
+5674	5ca7cff4e572f479bd4331d40	4 killed, several injured in SW China car accident	Two killed, seventeen injured in Raiwind road accident	0.0
+2863	3cc90fe88485e1787ad5196a7	Police spokesman Brig. Gen. Edward Aritonang confirmed Saturday that another two had been arrested, one in Jakarta and another in Magelang, Central Java.	Brigadier General Edward Aritonang, a police spokesman, confirmed yesterday that another two had been arrested, one in Jakarta and another in Magelang, Central Java.	1.0
+7479	9df412b18bde238cb99f2936e	A man reels in a fish.	A woman is pouring oil in a bowl.	0.0
+6539	0137a91005ac449e598c93146	In a gym, the toprope will be wrapped over a cylindrical bar.	Alright, there are several different issues here that we must be sure to address.	0.0
+5883	fbb478605ec6e7ab2ad668f0b	The man is slicing a potato.	A man is slicing potato.	1.0
+4960	b124fe5c5f9e5315cf2b25cf9	Prince Charles 'compares Putin to Hitler'	Prince Charles 'compares Vladimir Putin to Adolf Hitler'	1.0
+7879	89987b95df8acf20b2583d0a8	You just have to base your answer on what you do know, which is what you want.	You may want it, but the process given to you is what you have to work within.	0.0
+6736	7c9c66c61ebb0f590cc823660	You have to define the problem before attempting a solution.	Whenever I start reading the same lines over and over again, I start skimming.	0.0
+6201	d803458170bac147acbcaa6c6	A dog jogs through the grass.	a dog trots through the grass.	1.0
+5325	a470bcfbd67951e7a5ae70e7a	Algerian priest to lecture about Christian heritage in N. Africa	Telstra applies to list China site in NY	0.0
+1422	130a234f55eebb86e574016bb	Two women are sitting in a cafe.	Two men catching a fish in a swamp.	0.0
+4629	1e3e5bb473a5a804d57d2423d	Students take a ride on airwaves	5.5-magnitude quake hits off Taiwan	0.0
+7924	1fb5b6ca45b86f20694a08612	There is no maximum.	There is no quarantine period.	0.0
+1912	b0488ea071c084d9bf6b77374	A man in a blue cap is sitting on a stool under a tree.	A dog standing on a beach with a ball nearby.	0.0
+5860	ad8f0689a9af873d6867af36f	A woman is dancing.	A man breaks a stick.	0.0
+8578	8573515fb768a895ae8987188	Protests continue in tense Ukraine capital	Protests Continue In Ukraine's Capital	1.0
+4417	1171847e406ba9f1d7e9cbd69	Zimmerman stopped for speeding in Texas, released with warning	Zimmerman pulled over in Texas for speeding, given warning	1.0
+4644	ee9c0eea19ad74c4272af2a6a	Australia to scrap soaring national debt ceiling	Australian PM insists no argument with Indonesia	0.0
+57	3bb288ccdce5495916e58086e	A man is playing the drums.	A man plays the drum.	1.0
+115	401130246427db8b31046eb16	A woman is using a sewing machine.	A woman is sewing on a machine.	1.0
+5703	e7ed1ad1e9c9d1f0c4614affd	Libya: UN orders investigation into Libya rights abuses	India's top court orders investigation into job scam, deaths	0.0
+7435	994fcf74dc92cb65d8c535d40	A man is bowling.	A kitten is walking.	0.0
+7676	fb81d2bf3431a8218b734a43f	a dog jumps into the water.	A dog is jumping into the water.	1.0
+4593	5d6f58243bc64b82bbeba1f97	Egypt interior minister survives bomb	Egypt's interior minister survives bomb attack	1.0
+6681	442bebfa7d8b912dfc042dc7e	We have two parallel worlds in collision or maybe more.	Our intrepid heroes also didn't pursue the child who was in the spacesuit.	0.0
+7807	f6483b62700417f1134cf84b3	There is a cook preparing food.	A cook is making food.	1.0
+3661	5e7bd214fba324d607eedd65e	putin stated that the russian government could withdraw from the treaty altogether if western nations refuse to ratify the amended treaty. 	putin stated that russia could discard the treaty entirely if western nations refuse to ratify its amended version.	1.0
+7613	f888e13023b8f7769e4741cf1	A Philips flat-screen TV is shown with its two remote controls.	A Phillips flat screen TV with two remote controls.	1.0
+6226	3d17bf48922cb10c460806681	A dog with a stick follows another dog through the water.	A four wheel drive car is driving through the mud.	0.0
+5553	55318cd518ae96054c9bff5fb	Spain Princess Testifies in Historic Fraud Probe	Spain princess testifies in historic fraud probe	1.0
+5431	125dff1e87b1d2af6c3c1e0af	Protesters gather in Brazil despite concessions	Protests sweep Brazil despite concession	1.0
+1095	f4be770397cc83adc30752d8c	A close-up of an animal with a long face standing on grass near a tree.	A close-up of a woman with black boots next to a blue motorcycle.	0.0
+1684	7a4c85baf587de88ccd738b0d	Man in red shorts and white shirt kicking a soccer ball.	A black dog stands in the surf holding a red rubber ball.	0.0
+4989	1222c34b839001900a9e9accf	Nobel author Doris Lessing dies at 94	Nobel laureate Doris Lessing dies at 94	1.0
+7917	9ca82ed9c033d528a77612938	Take a look at these:	Take a look at this: 	1.0
+463	f7c05ae54b9cf40204a74c925	A girl is playing a piano.	A boy is doing push ups.	0.0
+430	633cbe75968bec1402b8a345d	A man is tying his shoe.	A dog is riding on a bicyclists shoulders.	0.0
+6872	88bbd8c5552b7031e2dab9f00	The last time the survey was conducted, in 1995, those numbers matched.	In 1995, the last survey, those numbers were equal.	1.0
+8497	c249064f079936770c2166940	US authorities charge man in ricin probe	South African police arrest 50 in farm protest	0.0
+4791	bb2cf8fda32a8abddd6cb5611	Senate to vote on moving ahead on Hagel nod	Benedict comes home to new house and new Pope	0.0
+3006	13c797ba33dda6ceeebc7acdc	The bill says that a woman who undergoes such an abortion couldn't be prosecuted.	A woman who underwent such an abortion could not be prosecuted under the bill.	1.0
