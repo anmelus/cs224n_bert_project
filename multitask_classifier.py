@@ -181,8 +181,8 @@ def train_multitask(args):
     device = torch.device('cuda') if args.use_gpu else torch.device('cpu')
     # Load data
     # Create the data and its corresponding datasets and dataloader
-    sst_train_data, num_labels,para_train_data, sts_train_data = load_multitask_data(args.sst_train,args.para_train,args.sts_train,'SICK_train.csv', split ='train')
-    sst_dev_data, num_labels,para_dev_data, sts_dev_data = load_multitask_data(args.sst_dev,args.para_dev,args.sts_dev,'SICK_dev.csv', split ='train')
+    sst_train_data, num_labels,para_train_data, sts_train_data = load_multitask_data(args.sst_train,[args.para_train, 'SICK_train-para.csv', 'sts_train-para.csv'],[args.sts_train, 'SICK_train-scaled.csv'], split ='train')
+    sst_dev_data, num_labels,para_dev_data, sts_dev_data = load_multitask_data(args.sst_dev,[args.para_dev, 'SICK_dev-para.csv', 'sts_dev-para.csv'],[args.sts_dev, 'SICK_dev-scaled.csv'], split ='train')
 
     sst_train_data = SentenceClassificationDataset(sst_train_data, args)
     sst_dev_data = SentenceClassificationDataset(sst_dev_data, args)

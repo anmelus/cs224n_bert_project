@@ -244,8 +244,8 @@ def load_multitask_test_data():
     return sentiment_data, paraphrase_data, similarity_data
 
 
-
-def load_multitask_data(sentiment_filename,paraphrase_filename,similarity_filename,sts_addl_filename,split='train'):
+# note: only paraphrase and similarity have support for multiple train sets atm
+def load_multitask_data(sentiment_filename,paraphrase_filename,similarity_filename,split='train'):
     sentiment_data = []
     num_labels = {}
     if split == 'test':
@@ -276,15 +276,17 @@ def load_multitask_data(sentiment_filename,paraphrase_filename,similarity_filena
                                         sent_id))
 
     else:
-        with open(paraphrase_filename, 'r', encoding='utf8') as fp:
-            for record in csv.DictReader(fp,delimiter = '\t'):
-                try:
-                    sent_id = record['id'].lower().strip()
-                    paraphrase_data.append((preprocess_string(record['sentence1']),
-                                            preprocess_string(record['sentence2']),
-                                            int(float(record['is_duplicate'])),sent_id))
-                except:
-                    pass
+        # added ability to open additional paraphrase data for training (in a loop, for multiple add'l files)
+        for filename in paraphrase_filename:
+            with open(paraphrase_filename, 'r', encoding='utf8') as fp:
+                for record in csv.DictReader(fp,delimiter = '\t'):
+                    try:
+                        sent_id = record['id'].lower().strip()
+                        paraphrase_data.append((preprocess_string(record['sentence1']),
+                                                preprocess_string(record['sentence2']),
+                                                int(float(record['is_duplicate'])),sent_id))
+                    except:
+                        pass
 
     print(f"Loaded {len(paraphrase_data)} {split} examples from {paraphrase_filename}")
 
@@ -297,20 +299,14 @@ def load_multitask_data(sentiment_filename,paraphrase_filename,similarity_filena
                                         preprocess_string(record['sentence2'])
                                         ,sent_id))
     else:
-        with open(similarity_filename, 'r', encoding='utf8') as fp:
-            for record in csv.DictReader(fp,delimiter = '\t'):
-                sent_id = record['id'].lower().strip()
-                similarity_data.append((preprocess_string(record['sentence1']),
-                                        preprocess_string(record['sentence2']),
-                                        float(record['similarity']),sent_id))
-                                        
-        # added ability to open addition sts data for training
-        with open(sts_addl_filename, 'r', encoding='utf8') as fp:
-            for record in csv.DictReader(fp,delimiter = '\t'):
-                sent_id = record['id'].lower().strip()
-                similarity_data.append((preprocess_string(record['sentence1']),
-                                        preprocess_string(record['sentence2']),
-                                        float(record['similarity']),sent_id))
+        # added ability to open addition sts data for training (in a loop, for multiple add'l files)
+        for filename in similarity_filename:
+            with open(filename, 'r', encoding='utf8') as fp:
+                for record in csv.DictReader(fp,delimiter = '\t'):
+                    sent_id = record['id'].lower().strip()
+                    similarity_data.append((preprocess_string(record['sentence1']),
+                                            preprocess_string(record['sentence2']),
+                                            float(record['similarity']),sent_id))
 
     print(f"Loaded {len(similarity_data)} {split} examples from {similarity_filename}")
 
