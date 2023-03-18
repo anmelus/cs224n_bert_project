@@ -42,8 +42,8 @@ def adversarial_loss_sst(model, b_ids_sst, b_mask_sst, b_labels_sst, epsilon=0.2
     perturbations = torch.zeros_like(b_ids_sst).uniform_(-epsilon, epsilon)
     perturbations = perturbations.cuda()
     perturbed_ids_sst = b_ids_sst + perturbations
-    perturbed_ids_sst = torch.clamp(perturbed_ids_sst, min=0, max=4)
-    
+    perturbed_ids_sst = torch.clamp(perturbed_ids_sst, min=0)
+
     # Compute logits for original and perturbed inputs
     perturbed_logits_sst = model.predict_sentiment((perturbed_ids_sst.type(torch.LongTensor)).cuda(), b_mask_sst)
     
@@ -65,8 +65,9 @@ def adversarial_loss_sentence(model, b_ids_1, b_mask_1, b_ids_2, b_mask_2, b_lab
     perturbed_ids_1 = b_ids_1 + perturbations_1
     perturbed_ids_2 = b_ids_2 + perturbations_2
 
-    perturbed_ids_1 = torch.clamp(perturbed_ids_1, min=0, max=5)
-    perturbed_ids_2 = torch.clamp(perturbed_ids_2, min=0, max=5)
+    perturbed_ids_1 = torch.clamp(perturbed_ids_1, min=0)
+    perturbed_ids_2 = torch.clamp(perturbed_ids_2, min=0)
+
 
     # Compute logits for original and perturbed inputs
     if (which == 'PARA'):
