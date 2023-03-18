@@ -10,7 +10,7 @@ from bert import BertModel
 from optimizer import AdamW
 from tqdm import tqdm
 
-from datasets import SentenceClassificationDataset, SentencePairDataset, load_multitask_data, load_multitask_test_data
+from datasets import SentenceClassificationDataset, SentencePairDataset, load_multitask_data, load_multitask_test_data, load_extra_data
 
 from evaluation import model_eval_sst, model_eval_multitask, test_model_multitask
 
@@ -181,8 +181,11 @@ def train_multitask(args):
     device = torch.device('cuda') if args.use_gpu else torch.device('cpu')
     # Load data
     # Create the data and its corresponding datasets and dataloader
-    sst_train_data, num_labels,para_train_data, sts_train_data = load_multitask_data(args.sst_train,[args.para_train, 'SICK_train-para.csv', 'sts_train-para.csv'],[args.sts_train, 'SICK_train-scaled.csv'], split ='train')
-    sst_dev_data, num_labels,para_dev_data, sts_dev_data = load_multitask_data(args.sst_dev,[args.para_dev, 'SICK_dev-para.csv', 'sts_dev-para.csv'],[args.sts_dev, 'SICK_dev-scaled.csv'], split ='train')
+    sst_train_data, num_labels, para_train_data, sts_train_data = load_multitask_data(args.sst_train,args.para_train,args.sts_train, split ='train') #'SICK_train-para.csv', 'SICK_train-scaled.csv', split ='train')
+    sst_dev_data, num_labels, para_dev_data, sts_dev_data = load_multitask_data(args.sst_dev,args.para_dev,args.sts_dev, split ='train') # 'SICK_dev-para.csv', 'SICK_dev-scaled.csv'
+    extra_train_data = load_extra_data('./data/SICK_train-scaled.csv', split ='train')
+    extra_dev_data = load_extra_data('./data/SICK_dev-scaled.csv', split ='train')
+    # _, _, _, extra_dev_data = load_extra_data(args.sst_dev,args.para_dev,'./data/SICK_dev-scaled.csv', split ='train')
 
     sst_train_data = SentenceClassificationDataset(sst_train_data, args)
     sst_dev_data = SentenceClassificationDataset(sst_dev_data, args)
@@ -211,6 +214,13 @@ def train_multitask(args):
                                       collate_fn=sts_train_data.collate_fn)
     sts_dev_dataloader = DataLoader(sts_dev_data, shuffle=True, batch_size=args.batch_size,
                                        collate_fn=sts_dev_data.collate_fn)
+    
+    #-----------
+    extra_train_data = SentencePairDataset(extra_train_data, args)
+    extra_dev_data = SentencePairDataset(extra_dev_data, args)
+
+    extra_train_dataloader = DataLoader(extra_train_data, shuffle=True, batch_size=args.batch_size,
+                                      collate_fn=extra_train_data.collate_fn)
 
     # Init model
     config = {'hidden_dropout_prob': args.hidden_dropout_prob,
@@ -244,9 +254,33 @@ def train_multitask(args):
         train_loss_sst = 0
         train_loss_para = 0
         train_loss_sts = 0
+        train_loss_extra = 0
         num_batches_sst = 0
         num_batches_para = 0
         num_batches_sts = 0
+        num_batches_extra = 0
+
+        for batch_extra in tqdm(extra_train_dataloader, desc=f'train-{epoch}', disable=TQDM_DISABLE):    
+            # Extra Similarity Task
+            b_ids_extra_1, b_mask_extra_1, b_ids_extra_2, b_mask_extra_2, b_labels_extra = (batch_extra['token_ids_1'], batch_extra['attention_mask_1'], 
+                                                    batch_extra['token_ids_2'], batch_extra['attention_mask_2'], batch_extra['labels'])
+
+            b_ids_extra_1 = b_ids_extra_1.to(device)
+            b_ids_extra_2 = b_ids_extra_2.to(device)
+            b_mask_extra_1 = b_mask_extra_1.to(device)
+            b_mask_extra_2 = b_mask_extra_2.to(device)
+            b_labels_extra = b_labels_extra.to(device)
+
+            logits_extra = model.predict_similarity(b_ids_extra_1, b_mask_extra_1, b_ids_extra_2, b_mask_extra_2)
+            loss_extra = F.mse_loss(logits_extra.view(-1,1), b_labels_extra.view(-1,1).float(), reduction='sum') / args.batch_size
+            loss_extra += l2_lambda * l2_reg
+
+            optimizer.zero_grad()
+            loss_extra.backward(retain_graph=True)
+            optimizer.step()
+
+            train_loss_extra += loss_extra.item()
+            num_batches_extra += 1
 
         for batch_sst in tqdm(sst_train_dataloader, desc=f'train-{epoch}', disable=TQDM_DISABLE):
             # Sentiment analysis task
@@ -323,11 +357,14 @@ def train_multitask(args):
             train_loss_sts += loss_sts.item()
             num_batches_sts += 1
 
+        
+
         avg_train_loss_sst = train_loss_sst / num_batches_sst
         avg_train_loss_para = train_loss_para / num_batches_para
         avg_train_loss_sts = train_loss_sts / num_batches_sts
+        avg_train_loss_extra = train_loss_extra / num_batches_extra
 
-        print(avg_train_loss_sst, avg_train_loss_para, avg_train_loss_sts)
+        print(avg_train_loss_sst, avg_train_loss_para, avg_train_loss_sts, avg_train_loss_extra)
 
         print(f"Training Set")
         paraphrase_accuracy, _, _, sentiment_accuracy, _, _, sts_corr, *_ = model_eval_multitask(sst_train_dataloader, para_train_dataloader, sts_train_dataloader, model, device)
@@ -335,7 +372,7 @@ def train_multitask(args):
         dev_paraphrase_accuracy, _, _, dev_sentiment_accuracy, _, _, dev_sts_corr, *_ = model_eval_multitask(sst_dev_dataloader, para_dev_dataloader, sts_dev_dataloader, model, device)
 
         total_average = (dev_paraphrase_accuracy + dev_sentiment_accuracy + dev_sts_corr) / 3
-        best_average = (dev_paraphrase_accuracy + best_para_acc + best_sts_corr) / 3
+        best_average = (best_sen_acc + best_para_acc + best_sts_corr) / 3
 
         print(f"Epoch {epoch}: sst train loss :: {avg_train_loss_sst :.3f}, sentiment acc :: {sentiment_accuracy :.3f}, dev sentiment acc :: {dev_sentiment_accuracy :.3f}")
         print(f"Epoch {epoch}: para train loss :: {avg_train_loss_para :.3f}, para acc :: {paraphrase_accuracy :.3f}, dev para acc :: {dev_paraphrase_accuracy :.3f}")
