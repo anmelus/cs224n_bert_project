@@ -32,32 +32,48 @@ N_SENTIMENT_CLASSES = 5
 
 # Define the L2 regularization hyperparameter
 l2_lambda = 0.01
-siar_lambda = 0.001
+la_lambda = 0.01
 
 # Helper functions
-def smoothness_regularization(x, x_hat, logits, eps=0.1, p=2):
-    # Calculate the maximum distance between xi and all xj in the batch
-    x_float = x.float()
-    max_dist = torch.max(torch.norm(x_float - x_float[:, None], dim=2, p=p), dim=1).values
+def adversarial_loss(model, b_ids_sst, b_mask_sst, b_labels_sst, epsilon=0.5):
+    # Generate adversarial examples using FGSM attack
+    b_ids_sst = b_ids_sst.to(torch.float32)
 
-    # Calculate the distance between x and its perturbed version x_hat
-    dist = torch.norm(x_float - x_hat, p=p, dim=1)
+    perturbations = torch.zeros_like(b_ids_sst).uniform_(-epsilon, epsilon)
+    perturbations = perturbations.cuda()
+    perturbed_ids_sst = b_ids_sst + perturbations
+    perturbed_ids_sst = torch.clamp(perturbed_ids_sst, min=0, max=1)
+    
+    # Compute logits for original and perturbed inputs
+    perturbed_logits_sst = model.predict_sentiment((perturbed_ids_sst.type(torch.LongTensor)).cuda(), b_mask_sst)
+    
+    # Compute adversarial loss using cross-entropy
+    adv_loss = F.cross_entropy(perturbed_logits_sst, b_labels_sst.view(-1), reduction='sum') / args.batch_size
 
-    # Calculate the regularization loss
-    reg_loss = torch.clamp(dist - eps * max_dist, min=0)
+    # b_ids_sst = b_ids_sst.long()
+    return adv_loss
 
-    # Calculate the mean regularization loss across the batch
-    reg_loss_mean = torch.mean(reg_loss)
+def adversarial_loss_para(model, b_ids_para_1, b_mask_para_1, b_ids_para_2, b_mask_para_2, b_labels_para, epsilon=0.5):
+    # Generate adversarial examples using FGSM attack
+    b_ids_para_1 = b_ids_para_1.to(torch.float32)
+    b_ids_para_2 = b_ids_para_2.to(torch.float32)
 
-    return siar_lambda * reg_loss_mean
+    perturbations_1 = torch.zeros_like(b_ids_para_1).uniform_(-epsilon, epsilon)
+    perturbations_2 = torch.zeros_like(b_ids_para_2).uniform_(-epsilon, epsilon)
+    perturbations_1 = perturbations_1.cuda()
+    perturbations_2 = perturbations_2.cuda()
+    perturbed_ids_1_para = b_ids_para_1 + perturbations_1
+    perturbed_ids_2_para = b_ids_para_2 + perturbations_2
 
-def add_noise(x, noise_level):
-    """
-    Adds Gaussian noise to the input data x.
+    perturbed_ids_1_para = torch.clamp(perturbed_ids_1_para, min=0, max=1)
+    perturbed_ids_2_para = torch.clamp(perturbed_ids_2_para, min=0, max=1)
 
-    """
-    noise = torch.randn(x.size()).cuda() * noise_level
-    return x + noise
+    # Compute logits for original and perturbed inputs
+    perturbed_logits_para = model.predict_paraphrase(b_ids_para_1, b_mask_para_1, b_ids_para_2, b_mask_para_2)
+    
+    # Compute adversarial loss using cross-entropy
+    adv_loss = F.binary_cross_entropy_with_logits(perturbed_logits_para, b_labels_para.view(-1).float(), reduction='sum') / args.batch_size
+    return adv_loss
 
 class MultitaskBERT(nn.Module):
     '''
@@ -70,7 +86,8 @@ class MultitaskBERT(nn.Module):
         super(MultitaskBERT, self).__init__()
         # You will want to add layers here to perform the downstream tasks.
         # Pretrain mode does not require updating bert paramters.
-        self.bert = BertModel.from_pretrained('bert-base-uncased')
+        self.bertSST = BertModel.from_pretrained('bert-base-uncased')
+        self.bertpara = BertModel.from_pretrained('bert-base-uncased')
         self.bertSTS = BertModel.from_pretrained('bert-base-uncased')  # Using separate BERT for finetuning on paraphrase and STS
 
         for param in self.bert.parameters():
@@ -100,10 +117,11 @@ class MultitaskBERT(nn.Module):
         # Here, you can start by just returning the embeddings straight from BERT.
         # When thinking of improvements, you can later try modifying this
         # (e.g., by adding other layers).
-        output = self.bert(input_ids=input_ids, attention_mask=attention_mask)['pooler_output']
+        output = self.bertSST(input_ids=input_ids, attention_mask=attention_mask)['pooler_output']
+        output_para = self.bertpara(input_ids=input_ids, attention_mask=attention_mask)['pooler_output']
         output_STS = self.bertSTS(input_ids=input_ids, attention_mask=attention_mask)['pooler_output']
 
-        return output, output_STS
+        return output, output_para, output_STS
 
 
     def predict_sentiment(self, input_ids, attention_mask):
@@ -112,7 +130,7 @@ class MultitaskBERT(nn.Module):
         (0 - negative, 1- somewhat negative, 2- neutral, 3- somewhat positive, 4- positive)
         Thus, your output should contain 5 logits for each sentence.
         '''
-        pooled_output = self.bert(input_ids, attention_mask)['pooler_output']
+        pooled_output = self.bertSST(input_ids, attention_mask)['pooler_output']
 
         sentiment_output = self.sentiment_fc1(pooled_output)
         sentiment_output = nn.ReLU()(sentiment_output)
@@ -127,9 +145,9 @@ class MultitaskBERT(nn.Module):
         Note that your output should be unnormalized (a logit); it will be passed to the sigmoid function
         during evaluation, and handled as a logit by the appropriate loss function.
         '''
-        pooled_output_1 = self.bertSTS(input_ids=input_ids_1, attention_mask=attention_mask_1)['pooler_output']
+        pooled_output_1 = self.bertpara(input_ids=input_ids_1, attention_mask=attention_mask_1)['pooler_output']
         pooled_output_1 = self.dropout(pooled_output_1)
-        pooled_output_2 = self.bertSTS(input_ids=input_ids_2, attention_mask=attention_mask_2)['pooler_output']
+        pooled_output_2 = self.bertpara(input_ids=input_ids_2, attention_mask=attention_mask_2)['pooler_output']
         pooled_output_2 = self.dropout(pooled_output_2)
 
         pooled_outputs = torch.cat([pooled_output_1, pooled_output_2], dim=1) # shape [batch_size, 2 * seq_len, hidden_size]
@@ -184,7 +202,7 @@ def train_multitask(args):
     sst_train_data, num_labels, para_train_data, sts_train_data = load_multitask_data(args.sst_train,args.para_train,args.sts_train, split ='train') #'SICK_train-para.csv', 'SICK_train-scaled.csv', split ='train')
     sst_dev_data, num_labels, para_dev_data, sts_dev_data = load_multitask_data(args.sst_dev,args.para_dev,args.sts_dev, split ='train') # 'SICK_dev-para.csv', 'SICK_dev-scaled.csv'
     extra_train_data = load_extra_data('./data/SICK_train-scaled.csv', split ='train')
-    extra_dev_data = load_extra_data('./data/SICK_dev-scaled.csv', split ='train')
+    # extra_dev_data = load_extra_data('./data/SICK_dev-scaled.csv', split ='train')
     # _, _, _, extra_dev_data = load_extra_data(args.sst_dev,args.para_dev,'./data/SICK_dev-scaled.csv', split ='train')
 
     sst_train_data = SentenceClassificationDataset(sst_train_data, args)
@@ -217,7 +235,7 @@ def train_multitask(args):
     
     #-----------
     extra_train_data = SentencePairDataset(extra_train_data, args)
-    extra_dev_data = SentencePairDataset(extra_dev_data, args)
+    # extra_dev_data = SentencePairDataset(extra_dev_data, args)
 
     extra_train_dataloader = DataLoader(extra_train_data, shuffle=True, batch_size=args.batch_size,
                                       collate_fn=extra_train_data.collate_fn)
@@ -260,28 +278,6 @@ def train_multitask(args):
         num_batches_sts = 0
         num_batches_extra = 0
 
-        for batch_extra in tqdm(extra_train_dataloader, desc=f'train-{epoch}', disable=TQDM_DISABLE):    
-            # Extra Similarity Task
-            b_ids_extra_1, b_mask_extra_1, b_ids_extra_2, b_mask_extra_2, b_labels_extra = (batch_extra['token_ids_1'], batch_extra['attention_mask_1'], 
-                                                    batch_extra['token_ids_2'], batch_extra['attention_mask_2'], batch_extra['labels'])
-
-            b_ids_extra_1 = b_ids_extra_1.to(device)
-            b_ids_extra_2 = b_ids_extra_2.to(device)
-            b_mask_extra_1 = b_mask_extra_1.to(device)
-            b_mask_extra_2 = b_mask_extra_2.to(device)
-            b_labels_extra = b_labels_extra.to(device)
-
-            logits_extra = model.predict_similarity(b_ids_extra_1, b_mask_extra_1, b_ids_extra_2, b_mask_extra_2)
-            loss_extra = F.mse_loss(logits_extra.view(-1,1), b_labels_extra.view(-1,1).float(), reduction='sum') / args.batch_size
-            loss_extra += l2_lambda * l2_reg
-
-            optimizer.zero_grad()
-            loss_extra.backward(retain_graph=True)
-            optimizer.step()
-
-            train_loss_extra += loss_extra.item()
-            num_batches_extra += 1
-
         for batch_sst in tqdm(sst_train_dataloader, desc=f'train-{epoch}', disable=TQDM_DISABLE):
             # Sentiment analysis task
             b_ids_sst, b_mask_sst, b_labels_sst = (batch_sst['token_ids'],
@@ -294,6 +290,9 @@ def train_multitask(args):
             logits_sst = model.predict_sentiment(b_ids_sst, b_mask_sst)
             
             loss_sst = F.cross_entropy(logits_sst, b_labels_sst.view(-1), reduction='sum') / args.batch_size
+            adv_loss_sst = adversarial_loss(model, b_ids_sst, b_mask_sst, b_labels_sst)
+            loss_sst += la_lambda * adv_loss_sst
+
             loss_sst += l2_lambda * l2_reg
 
             optimizer.zero_grad()
@@ -316,6 +315,10 @@ def train_multitask(args):
 
             logits_para = model.predict_paraphrase(b_ids_para_1, b_mask_para_1, b_ids_para_2, b_mask_para_2)
             loss_para = F.binary_cross_entropy_with_logits(logits_para, b_labels_para.view(-1).float(), reduction='sum') / args.batch_size
+
+            # adv_loss_para = adversarial_loss_para(model, b_ids_para_1, b_mask_para_1, b_ids_para_2, b_mask_para_2, b_labels_para)
+            # loss_para += la_lambda * adv_loss_para
+
             loss_para += l2_lambda * l2_reg
 
             optimizer.zero_grad()
@@ -357,7 +360,27 @@ def train_multitask(args):
             train_loss_sts += loss_sts.item()
             num_batches_sts += 1
 
-        
+        for batch_extra in tqdm(extra_train_dataloader, desc=f'train-{epoch}', disable=TQDM_DISABLE):    
+            # Extra Similarity Task
+            b_ids_extra_1, b_mask_extra_1, b_ids_extra_2, b_mask_extra_2, b_labels_extra = (batch_extra['token_ids_1'], batch_extra['attention_mask_1'], 
+                                                    batch_extra['token_ids_2'], batch_extra['attention_mask_2'], batch_extra['labels'])
+
+            b_ids_extra_1 = b_ids_extra_1.to(device)
+            b_ids_extra_2 = b_ids_extra_2.to(device)
+            b_mask_extra_1 = b_mask_extra_1.to(device)
+            b_mask_extra_2 = b_mask_extra_2.to(device)
+            b_labels_extra = b_labels_extra.to(device)
+
+            logits_extra = model.predict_similarity(b_ids_extra_1, b_mask_extra_1, b_ids_extra_2, b_mask_extra_2)
+            loss_extra = F.mse_loss(logits_extra.view(-1,1), b_labels_extra.view(-1,1).float(), reduction='sum') / args.batch_size
+            loss_extra += l2_lambda * l2_reg
+
+            optimizer.zero_grad()
+            loss_extra.backward(retain_graph=True)
+            optimizer.step()
+
+            train_loss_extra += loss_extra.item()
+            num_batches_extra += 1
 
         avg_train_loss_sst = train_loss_sst / num_batches_sst
         avg_train_loss_para = train_loss_para / num_batches_para
