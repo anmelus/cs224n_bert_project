@@ -90,7 +90,13 @@ class MultitaskBERT(nn.Module):
         self.bertpara = BertModel.from_pretrained('bert-base-uncased')
         self.bertSTS = BertModel.from_pretrained('bert-base-uncased')  # Using separate BERT for finetuning on paraphrase and STS
 
-        for param in self.bert.parameters():
+        for param in self.bertSST.parameters():
+            if config.option == 'pretrain':
+                param.requires_grad = False
+            elif config.option == 'finetune':
+                param.requires_grad = True
+
+        for param in self.bertpara.parameters():
             if config.option == 'pretrain':
                 param.requires_grad = False
             elif config.option == 'finetune':
