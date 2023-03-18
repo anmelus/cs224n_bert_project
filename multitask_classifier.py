@@ -35,7 +35,7 @@ l2_lambda = 0.01
 la_lambda = 0.01
 
 # Helper functions
-def adversarial_loss(model, b_ids_sst, b_mask_sst, b_labels_sst, epsilon=0.5):
+def adversarial_loss_sst(model, b_ids_sst, b_mask_sst, b_labels_sst, epsilon=0.2):
     # Generate adversarial examples using FGSM attack
     b_ids_sst = b_ids_sst.to(torch.float32)
 
@@ -53,26 +53,31 @@ def adversarial_loss(model, b_ids_sst, b_mask_sst, b_labels_sst, epsilon=0.5):
     # b_ids_sst = b_ids_sst.long()
     return adv_loss
 
-def adversarial_loss_para(model, b_ids_para_1, b_mask_para_1, b_ids_para_2, b_mask_para_2, b_labels_para, epsilon=0.5):
+def adversarial_loss_sentence(model, b_ids_1, b_mask_1, b_ids_2, b_mask_2, b_labels, epsilon=0.2, which='PARA'):
     # Generate adversarial examples using FGSM attack
-    b_ids_para_1 = b_ids_para_1.to(torch.float32)
-    b_ids_para_2 = b_ids_para_2.to(torch.float32)
+    b_ids_1 = b_ids_1.to(torch.float32)
+    b_ids_2 = b_ids_2.to(torch.float32)
 
-    perturbations_1 = torch.zeros_like(b_ids_para_1).uniform_(-epsilon, epsilon)
-    perturbations_2 = torch.zeros_like(b_ids_para_2).uniform_(-epsilon, epsilon)
+    perturbations_1 = torch.zeros_like(b_ids_1).uniform_(-epsilon, epsilon)
+    perturbations_2 = torch.zeros_like(b_ids_2).uniform_(-epsilon, epsilon)
     perturbations_1 = perturbations_1.cuda()
     perturbations_2 = perturbations_2.cuda()
-    perturbed_ids_1_para = b_ids_para_1 + perturbations_1
-    perturbed_ids_2_para = b_ids_para_2 + perturbations_2
+    perturbed_ids_1 = b_ids_1 + perturbations_1
+    perturbed_ids_2 = b_ids_2 + perturbations_2
 
-    perturbed_ids_1_para = torch.clamp(perturbed_ids_1_para, min=0, max=1)
-    perturbed_ids_2_para = torch.clamp(perturbed_ids_2_para, min=0, max=1)
+    perturbed_ids_1 = torch.clamp(perturbed_ids_1, min=0, max=1)
+    perturbed_ids_2 = torch.clamp(perturbed_ids_2, min=0, max=1)
 
     # Compute logits for original and perturbed inputs
-    perturbed_logits_para = model.predict_paraphrase(b_ids_para_1, b_mask_para_1, b_ids_para_2, b_mask_para_2)
+    if (which == 'PARA'):
+        perturbed_logits = model.predict_paraphrase((perturbed_ids_1.type(torch.LongTensor)).cuda(), b_mask_1, 
+                                                         (perturbed_ids_2.type(torch.LongTensor)).cuda(), b_mask_2)
+    else:
+        perturbed_logits = model.predict_similarity((perturbed_ids_1.type(torch.LongTensor)).cuda(), b_mask_1, 
+                                                         (perturbed_ids_2.type(torch.LongTensor)).cuda(), b_mask_2)
     
     # Compute adversarial loss using cross-entropy
-    adv_loss = F.binary_cross_entropy_with_logits(perturbed_logits_para, b_labels_para.view(-1).float(), reduction='sum') / args.batch_size
+    adv_loss = F.binary_cross_entropy_with_logits(perturbed_logits, b_labels.view(-1).float(), reduction='sum') / args.batch_size
     return adv_loss
 
 class MultitaskBERT(nn.Module):
@@ -296,7 +301,7 @@ def train_multitask(args):
             logits_sst = model.predict_sentiment(b_ids_sst, b_mask_sst)
             
             loss_sst = F.cross_entropy(logits_sst, b_labels_sst.view(-1), reduction='sum') / args.batch_size
-            adv_loss_sst = adversarial_loss(model, b_ids_sst, b_mask_sst, b_labels_sst)
+            adv_loss_sst = adversarial_loss_sst(model, b_ids_sst, b_mask_sst, b_labels_sst)
             loss_sst += la_lambda * adv_loss_sst
 
             loss_sst += l2_lambda * l2_reg
@@ -322,10 +327,8 @@ def train_multitask(args):
             logits_para = model.predict_paraphrase(b_ids_para_1, b_mask_para_1, b_ids_para_2, b_mask_para_2)
             loss_para = F.binary_cross_entropy_with_logits(logits_para, b_labels_para.view(-1).float(), reduction='sum') / args.batch_size
 
-            # adv_loss_para = adversarial_loss_para(model, b_ids_para_1, b_mask_para_1, b_ids_para_2, b_mask_para_2, b_labels_para)
-            # loss_para += la_lambda * adv_loss_para
-
-            loss_para += l2_lambda * l2_reg
+            adv_loss_para = adversarial_loss_sentence(model, b_ids_para_1, b_mask_para_1, b_ids_para_2, b_mask_para_2, b_labels_para)
+            loss_para += la_lambda * adv_loss_para + l2_lambda * l2_reg
 
             optimizer.zero_grad()
             loss_para.backward(retain_graph=True)
@@ -349,15 +352,8 @@ def train_multitask(args):
             logits_sts = model.predict_similarity(b_ids_sts_1, b_mask_sts_1, b_ids_sts_2, b_mask_sts_2)
             loss_sts = F.mse_loss(logits_sts.view(-1,1), b_labels_sts.view(-1,1).float(), reduction='sum') / args.batch_size
 
-            # mnrl_loss = losses.MultipleNegativesRankingLoss()
-            # loss_sts = mnrl_loss(logits_sts, b_labels_sts)
-            # x = torch.cat((b_ids_sts_1, b_ids_sts_2), dim=1)
-            # x_hat = add_noise(x, 0.1)
-            # # Add adversarial regularization term to loss function
-            # siar_loss = smoothness_regularization(x, x_hat, logits_sts, eps=0.1, p=2)
-            # loss_sts += siar_loss
-
-            loss_sts += l2_lambda * l2_reg
+            adv_loss_sts = adversarial_loss_sentence(model, b_ids_sts_1, b_mask_sts_1, b_ids_sts_2, b_mask_sts_2, b_labels_sts, which='STS')
+            loss_sts += la_lambda * adv_loss_sts + l2_lambda * l2_reg
 
             optimizer.zero_grad()
             loss_sts.backward(retain_graph=True)
@@ -379,7 +375,10 @@ def train_multitask(args):
 
             logits_extra = model.predict_similarity(b_ids_extra_1, b_mask_extra_1, b_ids_extra_2, b_mask_extra_2)
             loss_extra = F.mse_loss(logits_extra.view(-1,1), b_labels_extra.view(-1,1).float(), reduction='sum') / args.batch_size
-            loss_extra += l2_lambda * l2_reg
+
+            adv_loss_extra = adversarial_loss_sentence(model, b_ids_extra_1, b_mask_extra_1, b_ids_extra_2, b_mask_extra_2, b_labels_extra, which='STS')
+            loss_extra += la_lambda * adv_loss_extra + l2_lambda * l2_reg
+            loss_extra /= 2
 
             optimizer.zero_grad()
             loss_extra.backward(retain_graph=True)
