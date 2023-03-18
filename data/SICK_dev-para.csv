@@ -1,0 +1,36 @@
+pair_ID,sentence_A,sentence_B,similarity
+218,A girl in white is dancing,A girl is wearing white clothes and is dancing,1.0
+1102,A woman is riding a horse,A man is opening a small package that contains headphones,0.0
+1333,The woman is measuring the other woman,A woman is being measured by another woman,1.0
+1493,A man is playing an electric guitar,A man is playing guitar,1.0
+1495,A man is playing a guitar,A man is strumming a guitar,1.0
+1847,One man is sitting on the chair,"The girl, who is little, is ruffling her hair",0.0
+1964,One person is playing the guitar and singing,A person is playing a guitar and singing,1.0
+3250,A woman is placing two eggs into a pot of water,A woman is putting two eggs into a pot of water,1.0
+3275,A child is running in and out of the waves of the ocean,A child is running in and out of the ocean waves,1.0
+3364,A woman is cleaning a shrimp,The woman is cleaning a shrimp,1.0
+3536,Someone is cooking okra in a pan,Okra is being cooked in a pan,1.0
+3670,It is raining on a walking man,A man is walking in the rain,1.0
+3721,The person is slicing onions,Onions are being sliced by the person,1.0
+4015,The lady is picking up the kangaroo,The woman is picking up the kangaroo,1.0
+5030,The man is talking on the telephone,The man is speaking on the telephone,1.0
+5119,Two sumo ringers are fighting,A man is riding a water toy in the water,0.0
+5920,A horse is being ridden by a person,A woman is slicing potatoes,0.0
+6287,A black dog is running in the grass and its tongue is hanging out,A black dog is running in the grass,1.0
+6705,"A child, who is small, is outdoors climbing steps outdoors in an area full of grass",A small child is outdoors climbing steps in a grassy area,1.0
+7445,The little girl is swinging and the woman is standing behind her,"The girl, who is little, is swinging and the woman is standing behind",1.0
+7466,The group of people is sitting in a dim room,The group of people is sitting in a room which is dim,1.0
+7477,A man in a white shirt and sunglasses and a man in a black shirt and sunglasses are sitting at a table with four bottles of beer,A man in a white shirt and sunglasses and a man in a black shirt and sunglasses are sitting at a table with four beer bottles,1.0
+8660,A group of rollerbladers is lining up on the street,A group of rollerbladers is lining up on the road,1.0
+9132,A man in a jersey which is black is standing in a gym,A man in a black jersey is standing in a gym,1.0
+9303,The skateboarder is jumping in the air,A skateboarder is jumping in the air,1.0
+9359,A surfer is surfing a big wave,A surfer is surfing a huge wave,1.0
+9584,The woman is holding the paintbrush next to the artist's easel ,The lady is holding the paintbrush next to the artist's easel ,1.0
+9763,A person is slicing some mushrooms,The elephant is being ridden by the woman,0.0
+9788,A man is playing an electric guitar,A group of people is holding drinks and pointing at the camera,0.0
+9789,A girl in gold and purple is holding a rainbow afghan,A man is squatting in brush and taking a photo,0.0
+9838,Some instruments are being played by a band,"A young, topless woman is covered in paint",0.0
+9843,A family is buying something at the vending machine,A man in a suit is standing at a microphone and singing,0.0
+9963,The animal is grazing on the grass,The cop is sitting on a police bike,0.0
+9975,The dog is snapping at some droplets of water,A girl in a band is playing an instrument,0.0
+9988,A young man is pushing a motocross bike down a dirt hill,A dog is swimming after a tennis ball,0.0
