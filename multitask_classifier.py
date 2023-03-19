@@ -14,6 +14,9 @@ from datasets import SentenceClassificationDataset, SentencePairDataset, load_mu
 
 from evaluation import model_eval_sst, model_eval_multitask, test_model_multitask
 
+from classifier import SentimentDataset
+
+import csv
 
 TQDM_DISABLE=False
 
@@ -81,6 +84,32 @@ def adversarial_loss_sentence(model, b_ids_1, b_mask_1, b_ids_2, b_mask_2, b_lab
     adv_loss = F.binary_cross_entropy_with_logits(perturbed_logits, b_labels.view(-1).float(), reduction='sum') / args.batch_size
     return adv_loss
 
+# Load the data: a list of (sentence, label)
+def cfimdb_data(filename, flag='train'):
+    num_labels = {}
+    data = []
+    if flag == 'test':
+        with open(filename, 'r', encoding='utf-8') as fp:
+            for record in csv.DictReader(fp,delimiter = '\t'):
+                sent = record['sentence'].lower().strip()
+                sent_id = record['id'].lower().strip()
+                data.append((sent,sent_id))
+    else:
+        with open(filename, 'r', encoding='utf-8') as fp:
+            for record in csv.DictReader(fp,delimiter = '\t'):
+                sent = record['sentence'].lower().strip()
+                sent_id = record['id'].lower().strip()
+                label = int(record['sentiment'].strip())
+                if label not in num_labels:
+                    num_labels[label] = len(num_labels)
+                data.append((sent, label,sent_id))
+        print(f"load {len(data)} data from {filename}")
+
+    if flag == 'train':
+        return data, len(num_labels)
+    else:
+        return data
+
 class MultitaskBERT(nn.Module):
     '''
     This module should use BERT for 3 tasks:
@@ -93,8 +122,12 @@ class MultitaskBERT(nn.Module):
         # You will want to add layers here to perform the downstream tasks.
         # Pretrain mode does not require updating bert paramters.
         self.bertSST = BertModel.from_pretrained('bert-base-uncased')
-        self.bertPARA = BertModel.from_pretrained('bert-base-uncased')
-        self.bertSTS = BertModel.from_pretrained('bert-base-uncased')  # Using separate BERT for finetuning on paraphrase and STS
+
+        self.PARA_SBERT_1 = BertModel.from_pretrained('bert-base-uncased')
+        self.PARA_SBERT_2 = BertModel.from_pretrained('bert-base-uncased')
+
+        self.STS_SBERT_1 = BertModel.from_pretrained('bert-base-uncased')
+        self.STS_SBERT_2 = BertModel.from_pretrained('bert-base-uncased')
 
         for param in self.bertSST.parameters():
             if config.option == 'pretrain':
@@ -102,25 +135,35 @@ class MultitaskBERT(nn.Module):
             elif config.option == 'finetune':
                 param.requires_grad = True
 
-        for param in self.bertPARA.parameters():
+        for param in self.PARA_SBERT_1.parameters():
             if config.option == 'pretrain':
                 param.requires_grad = False
             elif config.option == 'finetune':
                 param.requires_grad = True
 
-        for param in self.bertSTS.parameters():
+        for param in self.PARA_SBERT_2.parameters():
+            if config.option == 'pretrain':
+                param.requires_grad = False
+            elif config.option == 'finetune':
+                param.requires_grad = True   
+
+        for param in self.STS_SBERT_1.parameters():
             if config.option == 'pretrain':
                 param.requires_grad = False
             elif config.option == 'finetune':
                 param.requires_grad = True
+
+        for param in self.STS_SBERT_2.parameters():
+            if config.option == 'pretrain':
+                param.requires_grad = False
+            elif config.option == 'finetune':
+                param.requires_grad = True   
 
         self.dropout = torch.nn.Dropout(config.hidden_dropout_prob)
         self.sentiment_fc1 = nn.Linear(BERT_HIDDEN_SIZE, 64)
         self.sentiment_fc2 = nn.Linear(64, 5)
-        self.paraphrase_fc1 = nn.Linear(BERT_HIDDEN_SIZE*2, 128)
-        self.paraphrase_fc2 = nn.Linear(128, 1)
-        self.similarity_fc1 = nn.Linear(BERT_HIDDEN_SIZE*2, 128)
-        self.similarity_fc2 = nn.Linear(128, 1)
+        self.paraphrase_fc1 = nn.Linear(BERT_HIDDEN_SIZE*3, 256)
+        self.paraphrase_fc2 = nn.Linear(256, 1)
 
 
     def forward(self, input_ids, attention_mask):
@@ -157,15 +200,15 @@ class MultitaskBERT(nn.Module):
         Note that your output should be unnormalized (a logit); it will be passed to the sigmoid function
         during evaluation, and handled as a logit by the appropriate loss function.
         '''
-        pooled_output_1 = self.bertPARA(input_ids=input_ids_1, attention_mask=attention_mask_1)['pooler_output']
-        pooled_output_1 = self.dropout(pooled_output_1)
-        pooled_output_2 = self.bertPARA(input_ids=input_ids_2, attention_mask=attention_mask_2)['pooler_output']
-        pooled_output_2 = self.dropout(pooled_output_2)
+        pooled_output_1 = self.PARA_SBERT_1(input_ids=input_ids_1, attention_mask=attention_mask_1)['pooler_output']
+        pooled_output_2 = self.PARA_SBERT_2(input_ids=input_ids_2, attention_mask=attention_mask_2)['pooler_output']
+        abs_diff = torch.abs(pooled_output_1 - pooled_output_2)
 
-        pooled_outputs = torch.cat([pooled_output_1, pooled_output_2], dim=1) # shape [batch_size, 2 * seq_len, hidden_size]
+        pooled_outputs = torch.cat([pooled_output_1, pooled_output_2, abs_diff], dim=1) # shape [batch_size, 3 * seq_len, hidden_size]
 
         paraphrase_output = self.paraphrase_fc1(pooled_outputs)
-        paraphrase_output = nn.ReLU()(paraphrase_output)
+        paraphrase_output = F.relu(paraphrase_output)
+        paraphrase_output = self.dropout(paraphrase_output)
         paraphrase_output = self.paraphrase_fc2(paraphrase_output)
         
         return paraphrase_output.squeeze()
@@ -177,19 +220,14 @@ class MultitaskBERT(nn.Module):
         '''Given a batch of pairs of sentences, outputs a single logit corresponding to how similar they are.
            WE WANT TO APPLY THE SIGMOID to scale from 0 to 1 then multiply by 5
         '''
-        pooled_output_1 = self.bertSTS(input_ids=input_ids_1, attention_mask=attention_mask_1)['pooler_output']
-        pooled_output_1 = self.dropout(pooled_output_1)
-        pooled_output_2 = self.bertSTS(input_ids=input_ids_2, attention_mask=attention_mask_2)['pooler_output']
-        pooled_output_2 = self.dropout(pooled_output_2)
+        pooled_output_1 = self.STS_SBERT_1(input_ids=input_ids_1, attention_mask=attention_mask_1)['pooler_output']
+        pooled_output_2 = self.STS_SBERT_2(input_ids=input_ids_2, attention_mask=attention_mask_2)['pooler_output']
 
-        pooled_outputs= torch.cat([pooled_output_1, pooled_output_2], dim=1)
-
-        similarity_output = self.similarity_fc1(pooled_outputs)
-        similarity_output = nn.ReLU()(similarity_output)
-        similarity_output = self.similarity_fc2(similarity_output)
+        similarity_output = F.cosine_similarity(pooled_output_1, pooled_output_2, dim=1)
+        similarity_output = self.dropout(similarity_output)
 
         similarity_output = torch.sigmoid(similarity_output) * 5
-        return similarity_output.squeeze() #
+        return similarity_output.squeeze()
 
 def save_model(model, optimizer, args, config, filepath):
     save_info = {
@@ -251,6 +289,12 @@ def train_multitask(args):
 
     extra_train_dataloader = DataLoader(extra_train_data, shuffle=True, batch_size=args.batch_size,
                                       collate_fn=extra_train_data.collate_fn)
+    
+    # x_data, x_labels = cfimdb_data('data/cfimdb_scaled.csv', 'train')
+    # cfimdb_train_dataset = SentimentDataset(x_data, args)
+
+    # cfimdb_train_dataloader = DataLoader(cfimdb_train_dataset, shuffle=True, batch_size=args.batch_size,
+    #                                      collate_fn=cfimdb_train_dataset.collate_fn)
 
     # Init model
     config = {'hidden_dropout_prob': args.hidden_dropout_prob,
@@ -305,9 +349,7 @@ def train_multitask(args):
             
             loss_sst = F.cross_entropy(logits_sst, b_labels_sst.view(-1), reduction='sum') / args.batch_size
             adv_loss_sst = adversarial_loss_sst(model, b_ids_sst, b_mask_sst, b_labels_sst)
-            loss_sst += la_lambda * adv_loss_sst
-
-            loss_sst += l2_lambda * l2_reg
+            loss_sst += la_lambda * adv_loss_sst + l2_lambda * l2_reg
 
             optimizer.zero_grad()
             loss_sst.backward(retain_graph=True)
@@ -330,6 +372,8 @@ def train_multitask(args):
             logits_para = model.predict_paraphrase(b_ids_para_1, b_mask_para_1, b_ids_para_2, b_mask_para_2)
             loss_para = F.binary_cross_entropy_with_logits(logits_para, b_labels_para.view(-1).float(), reduction='sum') / args.batch_size
 
+            print(logits_para)
+
             adv_loss_para = adversarial_loss_sentence(model, b_ids_para_1, b_mask_para_1, b_ids_para_2, b_mask_para_2, b_labels_para)
             loss_para += la_lambda * adv_loss_para + l2_lambda * l2_reg
 
@@ -341,6 +385,7 @@ def train_multitask(args):
             num_batches_para += 1
 
         # Consider separating training tasks
+        
         for batch_sts in tqdm(sts_train_dataloader, desc=f'train-{epoch}', disable=TQDM_DISABLE):    
             # Textual Similarity Task
             b_ids_sts_1, b_mask_sts_1, b_ids_sts_2, b_mask_sts_2, b_labels_sts = (batch_sts['token_ids_1'], batch_sts['attention_mask_1'], 
@@ -384,7 +429,7 @@ def train_multitask(args):
 
             adv_loss_extra = adversarial_loss_sentence(model, b_ids_extra_1, b_mask_extra_1, b_ids_extra_2, b_mask_extra_2, b_labels_extra, which='STS')
             loss_extra += la_lambda * adv_loss_extra + l2_lambda * l2_reg
-            loss_extra *= 0.01
+            loss_extra *= 0.001
 
             optimizer.zero_grad()
             loss_extra.backward(retain_graph=True)
