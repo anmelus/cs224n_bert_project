@@ -93,7 +93,7 @@ class MultitaskBERT(nn.Module):
         # You will want to add layers here to perform the downstream tasks.
         # Pretrain mode does not require updating bert paramters.
         self.bertSST = BertModel.from_pretrained('bert-base-uncased')
-        self.bertpara = BertModel.from_pretrained('bert-base-uncased')
+        self.bertPARA = BertModel.from_pretrained('bert-base-uncased')
         self.bertSTS = BertModel.from_pretrained('bert-base-uncased')  # Using separate BERT for finetuning on paraphrase and STS
 
         for param in self.bertSST.parameters():
@@ -102,7 +102,7 @@ class MultitaskBERT(nn.Module):
             elif config.option == 'finetune':
                 param.requires_grad = True
 
-        for param in self.bertpara.parameters():
+        for param in self.bertPARA.parameters():
             if config.option == 'pretrain':
                 param.requires_grad = False
             elif config.option == 'finetune':
@@ -130,7 +130,7 @@ class MultitaskBERT(nn.Module):
         # When thinking of improvements, you can later try modifying this
         # (e.g., by adding other layers).
         output = self.bertSST(input_ids=input_ids, attention_mask=attention_mask)['pooler_output']
-        output_para = self.bertpara(input_ids=input_ids, attention_mask=attention_mask)['pooler_output']
+        output_para = self.bertPARA(input_ids=input_ids, attention_mask=attention_mask)['pooler_output']
         output_STS = self.bertSTS(input_ids=input_ids, attention_mask=attention_mask)['pooler_output']
 
         return output, output_para, output_STS
@@ -157,9 +157,9 @@ class MultitaskBERT(nn.Module):
         Note that your output should be unnormalized (a logit); it will be passed to the sigmoid function
         during evaluation, and handled as a logit by the appropriate loss function.
         '''
-        pooled_output_1 = self.bertpara(input_ids=input_ids_1, attention_mask=attention_mask_1)['pooler_output']
+        pooled_output_1 = self.bertPARA(input_ids=input_ids_1, attention_mask=attention_mask_1)['pooler_output']
         pooled_output_1 = self.dropout(pooled_output_1)
-        pooled_output_2 = self.bertpara(input_ids=input_ids_2, attention_mask=attention_mask_2)['pooler_output']
+        pooled_output_2 = self.bertPARA(input_ids=input_ids_2, attention_mask=attention_mask_2)['pooler_output']
         pooled_output_2 = self.dropout(pooled_output_2)
 
         pooled_outputs = torch.cat([pooled_output_1, pooled_output_2], dim=1) # shape [batch_size, 2 * seq_len, hidden_size]
@@ -262,6 +262,8 @@ def train_multitask(args):
     config = SimpleNamespace(**config)
 
     model = MultitaskBERT(config)
+    #checkpoint = torch.load('finetune-100-1e-05-best-multitask.pt')
+    #model.load_state_dict(checkpoint['model'])
     model = model.to(device)
 
     lr = args.lr
@@ -374,12 +376,15 @@ def train_multitask(args):
             b_mask_extra_2 = b_mask_extra_2.to(device)
             b_labels_extra = b_labels_extra.to(device)
 
+            print("IDS:", b_ids_extra_1)
+            print("LABELS", b_labels_extra)
+
             logits_extra = model.predict_similarity(b_ids_extra_1, b_mask_extra_1, b_ids_extra_2, b_mask_extra_2)
             loss_extra = F.mse_loss(logits_extra.view(-1,1), b_labels_extra.view(-1,1).float(), reduction='sum') / args.batch_size
 
             adv_loss_extra = adversarial_loss_sentence(model, b_ids_extra_1, b_mask_extra_1, b_ids_extra_2, b_mask_extra_2, b_labels_extra, which='STS')
             loss_extra += la_lambda * adv_loss_extra + l2_lambda * l2_reg
-            loss_extra /= 2
+            loss_extra *= 0.01
 
             optimizer.zero_grad()
             loss_extra.backward(retain_graph=True)
